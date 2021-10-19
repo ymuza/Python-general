@@ -17,7 +17,7 @@ class Computer:
 c1 = Computer()
 c2 = Computer()
 
-c1.name = "pachi"
+c1.name = "pachis"
 c2.age = 34
 
 c1.update()
