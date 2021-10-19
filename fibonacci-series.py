@@ -8,8 +8,8 @@ if a <= 0:
 else:
     print(f, s, end=" ")
     for x in range(2, a):
-        next = f+s
-        print(next, end=" ")
+        nextElement = f+s
+        print(nextElement, end=" ")
         f = s
-        s = next
+        s = nextElement
 
