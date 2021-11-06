@@ -8,7 +8,6 @@ print (my_message)
 
 my_message2 = my_message + "" + other_message
 
-#my_message=my_message2
 
 print(my_message2)
 
