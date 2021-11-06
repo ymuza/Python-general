@@ -2,7 +2,7 @@ class Computer:
 
     def __init__(self):
         self.ram = ""
-        self.procesor = ""
+        self.processor = ""
 
     def select_computer(self):
         op = int(input("select the desired configuration: 1-Intel , 2-AMD :"))
@@ -11,13 +11,13 @@ class Computer:
         if selected_op == 1:
             self.ram = "16 DDR4"
             print(self.ram)
-            self.procesor = "Core I7 15000x"
-            print(self.procesor)
+            self.processor = "Core I7 15000x"
+            print(self.processor)
         elif selected_op == 2:
             self.ram = "16 DDR4"
             print(self.ram)
-            self.procesor = "Ryzen 7 3600x"
-            print(self.procesor)
+            self.processor = "Ryzen 7 3600x"
+            print(self.processor)
 
 
 c1 = Computer()

@@ -1,7 +1,7 @@
 class Computer:
     
     def __init__(self):
-        self.name = "pepo"
+        self.name = "peter"
         self.age = 29
 
     def update(self):
@@ -17,7 +17,7 @@ class Computer:
 c1 = Computer()
 c2 = Computer()
 
-c1.name = "pachis"
+c1.name = "robert"
 c2.age = 34
 
 c1.update()
