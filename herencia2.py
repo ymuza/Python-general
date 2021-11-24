@@ -15,7 +15,7 @@ class Student:
 
 class StudentAthlete(Student):
     def __init__(self, first, last, courses=None, sport=None):
-        super().__init__(first, last, courses) #first, last, courses son parametros que recupero de la clase heredada.
+        super().__init__(first, last, courses)  # first, last, courses son parametros que recupero de la clase heredada.
         self.sport = sport
 
 

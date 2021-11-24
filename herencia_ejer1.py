@@ -25,9 +25,7 @@ class Taxes(Car):
                 print(f"class tax for the car are{self.tax} ")
 
 
-
 car = Car()
-#car.print_data()
 print("\n")
 taxes = Taxes()
 

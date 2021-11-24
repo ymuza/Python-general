@@ -2,7 +2,7 @@
 #  Las listas son conjuntos de distintos tipos de datos.
 
 objeto_cualquiera = "custom object"
-my_data_type = [1, 2, False, 4, "yamil",objeto_cualquiera, 5.0, 1]
+my_data_type = [1, 2, False, 4, "yamil", objeto_cualquiera, 5.0, 1]
 
 print(my_data_type[3])  # imprime el dato que se encuentra en la posición 3 de la lista (empieza en la posición 0).
 print(type(my_data_type))

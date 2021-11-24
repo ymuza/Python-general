@@ -4,8 +4,8 @@ odds = []
 
 
 for a in list1:
-       if a % 2 != 0:
-          print(a)
+    if a % 2 != 0:
+        print(a)
 
 
 # usando list comprehension:

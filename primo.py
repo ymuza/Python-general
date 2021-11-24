@@ -1,4 +1,6 @@
-def test_primeNumber(n):
+
+
+def test_prime_umber(n):
     if n == 1:
         return False
     elif n == 2:
@@ -10,5 +12,5 @@ def test_primeNumber(n):
         return True
 
 
-print(test_primeNumber(13))
+print(test_prime_umber(13))
 

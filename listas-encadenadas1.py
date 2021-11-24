@@ -28,7 +28,7 @@ class LinkedList:
             to_print = to_print + str(current.data) + "->"
             current = current.next
         if to_print:
-            return "[" + to_print[:-2] +"]"
+            return "[" + to_print[:-2] + "]"
         return "[]"
 
     def amount_of_nodes(self):
@@ -40,7 +40,7 @@ class LinkedList:
 
         print(amount)
 
-    def add_to_start(self,x):
+    def add_to_start(self, x):
         pass
 
     def search_val(self, x):

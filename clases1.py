@@ -24,15 +24,15 @@ class Student:
     def __len__(self):
         return len(self.courses)
 
-    def __str__(self):  #__str__ es un metodo que permite retornar directamente todos los datos del objeto (abajo se pone 'print(nombre-obj)', y va a imprimir todos los datos.
+    def __str__(self):  # __str__ es un metodo que permite retornar directamente todos los datos del objeto (abajo se pone 'print(nombre-obj)', y va a imprimir todos los datos.
         return f"First name: {self.first_name.capitalize()}\nLast name: {self.last_name.capitalize()}\
-        \nCourses: {','.join(map(str.capitalize,self.courses))}" #map, con el metodo str.capitalize va a hacer que todos los elementos de la lista course empiecen con mayusc.
+        \nCourses: {','.join(map(str.capitalize,self.courses))}"  # map, con el metodo str.capitalize va a hacer que todos los elementos de la lista course empiecen con mayusc.
 
 
 courses1 = ['python', 'ruby', 'javascript']
 courses2 = ['java', 'rails', 'c']
 
-john = Student("john", "wick", courses1)  #john es un objeto de Student. Se puede pensar como una instancia de la clase Student.
+john = Student("john", "wick", courses1)  # john es un objeto de Student. Se puede pensar como una instancia de la clase Student.
 
 paul = Student("paul", "pierce", courses2)
 
@@ -44,8 +44,5 @@ john.remove_course('javascript')
 print(john)
 print(paul)
 
-#print (john.first_name,john.last_name,john.courses)
-#print (paul.first_name,paul.last_name,paul.courses)
-
- #'def__init__' es un metodo 'dunder' o 'mágico' sirve para inicializar la instancia de un objeto. Se caracteriza por doble '_'.'Courses' está = 'none' porque sino paso ningun curso va a dar error, y si está en None y paso, no hay problema.
-#'self' es por convencion el primer parametro que se pasa.Siempre que se use una instanciade la clase se tendrá que usar.
+  # 'def__init__' es un metodo 'dunder' o 'mágico' sirve para inicializar la instancia de un objeto. Se caracteriza por doble '_'.'Courses' está = 'none' porque sino paso ningun curso va a dar error, y si está en None y paso, no hay problema.
+  # 'self' es por convencion el primer parametro que se pasa.Siempre que se use una instanciade la clase se tendrá que usar.

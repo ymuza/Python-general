@@ -18,7 +18,6 @@ def quick_sort(sequence):
 
     items_sum = items_lower + items_greater
 
-
     return quick_sort(items_lower) + [pivot] + quick_sort(items_greater)
     # la linea de arriba va a llamar al algoritmo, poniendo de izquierda a derecha los menores al pivot y
     # de derecha a izquierda a los mayores al pivot

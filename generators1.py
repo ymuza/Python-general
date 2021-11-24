@@ -1,4 +1,4 @@
-#los generadores son rutinas o subprogramas usados para controlar el comportamiento de un iterador en un bucle.
+  # los generadores son rutinas o subprogramas usados para controlar el comportamiento de un iterador en un bucle.
 
 
 def topten():

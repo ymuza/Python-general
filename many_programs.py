@@ -1,28 +1,31 @@
 import jwt
-#Bubble sort algorithm:
+  # Bubble sort algorithm:
 
 
-def bs(list):  # a = name of list
-    b = len(list) - 1  # minus 1 because we always compare 2 adjacent values
+def bs(lista):  # a = name of list
+    b = len(lista) - 1  # minus 1 because we always compare 2 adjacent values
 
     for x in range(b):
         for y in range(b - x):
-            if list[y] > list[y + 1]:
-                list[y], list[y + 1] = list[y + 1], list[y]
+            if lista[y] > lista[y + 1]:
+                lista[y], lista[y + 1] = lista[y + 1], lista[y]
     return a
 
 
-
 bs(list)
-#-----------------------------------------------------
-#star triangle
+  # -----------------------------------------------------
+  # star triangle
+
+
 def pyfunc(r):
     for x in range(r):
         print(' '*(r-x-1)+'*'*(2*x+1))
+
+
 pyfunc(9)
 
-#-----------------------------------------------------
-#fibonacci series
+  #  -----------------------------------------------------
+# fibonacci series
 
 # Enter number of terms needed                   #0,1,1,2,3,5....
 a = int(input("Enter the terms"))
@@ -37,9 +40,9 @@ else:
         print(next, end=" ")
         f = s
         s = next
-#-----------------------------------------------------------
+  # -----------------------------------------------------------
 
-#check if a number is prime
+# check if a number is prime
 a = int(input("enter number"))
 if a > 1:
     for x in range(2, a):
@@ -50,8 +53,8 @@ if a > 1:
         print("Prime")
 else:
     print("not prime")
-#--------------------------------------------------------
-#check if a secuence is palindrome
+# --------------------------------------------------------
+# check if a secuence is palindrome
 a = input("enter sequence")
 b = a[::-1]
 if a == b:
