@@ -1,8 +1,9 @@
-def sum():
+def suma():
     a = 4
-    def sum2():
+
+    def suma2():
         nonlocal a
         print(a+2)
 
-    sum2()
+    suma2()
 

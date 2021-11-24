@@ -4,7 +4,7 @@ my_message = "hello \"hoe-ass\" bitches"
 
 other_message = " ,regulate"
 
-print (my_message)
+print(my_message)
 
 my_message2 = my_message + "" + other_message
 
@@ -44,26 +44,26 @@ user = "Yamil"
 message = "Welcome to the algorithms course"
 my_languages = ['Python', 'Ruby', 'Javascript']
 
-print(greeting, user, message) #imprime los 3 strings uno al lado del otro
+print(greeting, user, message)  # imprime los 3 strings uno al lado del otro
 
-print(len(greeting)) #imprime la cantidad de caracteres del string 'greeting' INCLUYENDO los espacios en blanco (ejemplo de esto abajo)
+print(len(greeting))  # imprime la cantidad de caracteres del string 'greeting' INCLUYENDO los espacios en blanco (ejemplo de esto abajo)
 print(len(message))
 print("\n")
-print(type(message)) #dice que de tipo es la variable 'message'
+print(type(message))  # dice que de tipo es la variable 'message'
 print("\n")
-print(user.capitalize()) #primera letra mayuscula
+print(user.capitalize())  # primera letra mayuscula
 print("\n")
-print(user.upper()) #todo en mayuscula
+print(user.upper())  # todo en mayuscula
 print("\n")
-print(user.lower()) #todo en minuscula
+print(user.lower())  # todo en minuscula
 print("\n")
-print(greeting,user,message.strip().lower()) # strip() saca los espacios en blanco por default . Acá se concatenan funciones
+print(greeting,user,message.strip().lower())  # strip() saca los espacios en blanco por default . Acá se concatenan funciones
 print("\n")
-print(message.find('course')) #Busca la palabra entre parentesis en ese string. Si no la encuentra, devuelve -1
+print(message.find('course'))  # Busca la palabra entre parentesis en ese string. Si no la encuentra, devuelve -1
 print("\n")
-print(message.split()) #Separa strings según los espacios en blanco. Entre parentesis, se especifica porque lo quiero separar (en este caso, espacios en blanco)
+print(message.split())  # Separa strings según los espacios en blanco. Entre parentesis, se especifica porque lo quiero separar (en este caso, espacios en blanco)
 print("\n")
-print("-".join(my_languages)) #junta strings mediante '-'
+print("-".join(my_languages))  # junta strings mediante '-'
 print("\n")
 
 #------print formating & special caracteres--------------------

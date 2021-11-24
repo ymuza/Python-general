@@ -19,7 +19,7 @@ class StudentAthlete(Student):
         self.sport = sport
 
 
-courses = ["python","ruby","javascript"]
+courses = ["python", "ruby", "javascript"]
 jane = StudentAthlete("jane", "doe", courses, "hockey")
-print (jane.sport)
-print(isinstance(jane, StudentAthlete)) #metodo para saber si jane pertenece a la clase StudentAthlete. Retorna true si es el caso.
+print(jane.sport)
+print(isinstance(jane, StudentAthlete))  # metodo para saber si jane pertenece a la clase StudentAthlete. Retorna true si es el caso.
