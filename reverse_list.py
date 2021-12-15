@@ -4,3 +4,4 @@ list2 = list1[::-1]
 
 print(list2)
 
+

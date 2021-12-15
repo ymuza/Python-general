@@ -7,7 +7,7 @@ class Cars:
         self.km = km
         self.serv = False
 
-    def service(self):
+    def service(self) -> bool:
         op = (input("does the car have the latest service done (y/n)? "))
         if op == 'y':
             self.serv = True
