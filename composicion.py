@@ -52,3 +52,4 @@ class Superbot:  # esta clase contiene 4 objetos.
 henry = Superbot()  # creo el superbot henry , y abajo le asigno las funciones
 henry.move()
 henry.clean()
+henry.play_game()
