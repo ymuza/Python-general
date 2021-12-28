@@ -2,7 +2,6 @@ nested_list = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
 
 print(nested_list[2][1])
 
-
 print("\n")
 
 nested_list2 = [{"orange": "orange"}, {"rose": "red"}, {"violet": "blue"}]

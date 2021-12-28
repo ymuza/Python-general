@@ -1,6 +1,6 @@
 class Student:
 
-    def __init__(self, first, last, courses = None):
+    def __init__(self, first, last, courses=None):
         self.first_name = first
         self.last_name = last
         if courses is None:
@@ -22,4 +22,5 @@ class StudentAthlete(Student):
 courses = ["python", "ruby", "javascript"]
 jane = StudentAthlete("jane", "doe", courses, "hockey")
 print(jane.sport)
-print(isinstance(jane, StudentAthlete))  # metodo para saber si jane pertenece a la clase StudentAthlete. Retorna true si es el caso.
+print(isinstance(jane,
+                 StudentAthlete))  # metodo para saber si jane pertenece a la clase StudentAthlete. Retorna true si es el caso.

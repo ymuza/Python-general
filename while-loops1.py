@@ -1,12 +1,10 @@
 from randoms import randint
 
-
 print("type a number: ")
 num = int(input())
 while num < 12:
     print(num)
     num = num + 1
-
 
 print("\n")
 

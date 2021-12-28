@@ -1,5 +1,3 @@
-import string
-
 my_message = "hello \"hoe-ass\" bitches"
 
 other_message = " ,regulate"
@@ -7,7 +5,6 @@ other_message = " ,regulate"
 print(my_message)
 
 my_message2 = my_message + "" + other_message
-
 
 print(my_message2)
 
@@ -37,7 +34,7 @@ print(name[::-1])  # imprime todos los caracteres al revés (del último al prim
 print("-----------------------")
 print("")
 
-  # Métodos y funciones que se pueden usar sobre strings (len(), type(), id(), capitalize(), upper(), lower(), find(), strip(), split(), join(), import string )--------
+# Métodos y funciones que se pueden usar sobre strings (len(), type(), id(), capitalize(), upper(), lower(), find(), strip(), split(), join(), import string )--------
 
 greeting = "hello"
 user = "Yamil"
@@ -46,7 +43,8 @@ my_languages = ['Python', 'Ruby', 'Javascript']
 
 print(greeting, user, message)  # imprime los 3 strings uno al lado del otro
 
-print(len(greeting))  # imprime la cantidad de caracteres del string 'greeting' INCLUYENDO los espacios en blanco (ejemplo de esto abajo)
+print(
+    len(greeting))  # imprime la cantidad de caracteres del string 'greeting' INCLUYENDO los espacios en blanco (ejemplo de esto abajo)
 print(len(message))
 print("\n")
 print(type(message))  # dice que de tipo es la variable 'message'
@@ -57,22 +55,25 @@ print(user.upper())  # todo en mayuscula
 print("\n")
 print(user.lower())  # todo en minuscula
 print("\n")
-print(greeting, user, message.strip().lower())  # strip() saca los espacios en blanco por default . Acá se concatenan funciones
+print(greeting, user,
+      message.strip().lower())  # strip() saca los espacios en blanco por default . Acá se concatenan funciones
 print("\n")
 print(message.find('course'))  # Busca la palabra entre parentesis en ese string. Si no la encuentra, devuelve -1
 print("\n")
-print(message.split())  # Separa strings según los espacios en blanco. Entre parentesis, se especifica porque lo quiero separar (en este caso, espacios en blanco)
+print(
+    message.split())  # Separa strings según los espacios en blanco. Entre parentesis, se especifica porque lo quiero separar (en este caso, espacios en blanco)
 print("\n")
 print("-".join(my_languages))  # junta strings mediante '-'
 print("\n")
 
-  # ------print formating & special caracteres--------------------
+# ------print formating & special caracteres--------------------
 
 stock_price = "1100"
 todays_price = "1100"
 yesterday_price = "1000"
 
-print("Today's price for google stock is: {}".format(stock_price)) # format mete el stock_price dentro de los corchetes.
+print(
+    "Today's price for google stock is: {}".format(stock_price))  # format mete el stock_price dentro de los corchetes.
 print("\n")
 print(f"Today's price for google stock is: {stock_price}")  # interpolación (hay una 'f' antes del string de caracteres)
 print("\n")
@@ -80,6 +81,6 @@ print(f"Today's price:{todays_price}, yesterday's price:{yesterday_price}")  # o
 print("\n")
 print("\n")
 
- # --------------math, type, input--------------------------------
+# --------------math, type, input--------------------------------
 
 type(4)

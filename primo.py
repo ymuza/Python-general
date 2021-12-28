@@ -1,5 +1,3 @@
-
-
 def test_prime_umber(n):
     if n == 1:
         return False
@@ -13,4 +11,3 @@ def test_prime_umber(n):
 
 
 print(test_prime_umber(13))
-

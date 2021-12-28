@@ -1,5 +1,4 @@
-import jwt
-  # Bubble sort algorithm:
+# Bubble sort algorithm:
 
 
 def bs(lista):  # a = name of list

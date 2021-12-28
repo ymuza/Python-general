@@ -3,7 +3,6 @@ def suma():
 
     def suma2():
         nonlocal a
-        print(a+2)
+        print(a + 2)
 
     suma2()
-

@@ -1,4 +1,3 @@
-
 class RoboDog:
     @staticmethod
     def bark():

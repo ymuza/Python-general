@@ -1,4 +1,3 @@
-
 def quick_sort(sequence):
     length = len(sequence)
     if length <= 1:

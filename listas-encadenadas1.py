@@ -36,7 +36,7 @@ class LinkedList:
         scroller = self.root
         while scroller is not None:
             scroller = scroller.next
-            amount = amount+1
+            amount = amount + 1
 
         print(amount)
 
@@ -68,16 +68,15 @@ node5 = Node(5)
 
 my_list = LinkedList()
 
-print("select an operation (1-see appended values, 2-add node to the beginning of the list, 3-search for a node, 4-remove node from list, 5-show the list length, 6-reverse the list recursively ): ")
+print(
+    "select an operation (1-see appended values, 2-add node to the beginning of the list, 3-search for a node, 4-remove node from list, 5-show the list length, 6-reverse the list recursively ): ")
 op = int(input())
-
 
 my_list.append_val(node1)
 my_list.append_val(node2)
 my_list.append_val(node3)
 my_list.append_val(node4)
 my_list.append_val(node5)
-
 
 if op == 1:
     print(my_list)

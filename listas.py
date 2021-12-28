@@ -1,4 +1,3 @@
-
 #  Las listas son conjuntos de distintos tipos de datos.
 
 objeto_cualquiera = "custom object"
@@ -16,7 +15,6 @@ my_data_type2.sort()  # el metodo sort organiza la lista como con 'sorted'
 print(f"sorted list-> {my_data_type2_sorted}")
 print("\n")
 print(f"sorted list but with the method sort()-> {my_data_type2}")
-
 
 p = 36
 my_data_type2.append(p)

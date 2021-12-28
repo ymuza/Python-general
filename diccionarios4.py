@@ -1,4 +1,3 @@
-
 my_dict = {'name': 'pedro', 'lastname': 'gomez'}
 
 print(my_dict)

@@ -36,7 +36,3 @@ c = Cars((input("type the maker: ")),
 c.service()
 c.usage()
 c.taxes()
-
-
-
-

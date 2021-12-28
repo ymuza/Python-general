@@ -46,5 +46,3 @@ if op == 1 or op == 2 or op == 3 or op == 4 or op == 5:
         print(f"Both numbers average is: {chosen_op}")
 else:
     print("The program ended.")
-
-

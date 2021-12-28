@@ -8,10 +8,9 @@ list1 = [6, 7, 8, 23, 45, 67]
 list2 = []
 
 for element in list1:
-    list2.append(element*element)
+    list2.append(element * element)
 print("list1 is " + str(list1))
 print("list2 is " + str(list2))
-
 
 print("\n")
 """
@@ -31,4 +30,3 @@ Generate a list with all multiple values of 8 between 1 and 500.
 """
 multiples_of8 = [value for value in range(1, 501) if value % 8 == 0]
 print(multiples_of8)
-

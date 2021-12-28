@@ -2,7 +2,6 @@ from datetime import datetime
 
 date = "13/03/1987"
 
-
 # date_formated = datetime.date(date)
 
 
