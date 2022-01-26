@@ -18,7 +18,10 @@ def multip(num1, num2):
 
 
 def divi(num1, num2):
-    return num1 / num2
+    try:
+        return num1 / num2
+    except Exception as e:
+        print("There is an error:", e)
 
 
 def average(sums):
@@ -40,7 +43,8 @@ if op == 1 or op == 2 or op == 3 or op == 4 or op == 5:
         print(f"The result of the multiplication is {chosen_op}")
     elif op == 4:
         chosen_op = (divi(num1, num2))
-        print(f"The result of the division is {chosen_op}")
+        if chosen_op is not None:
+            print(f"The result of the division is {chosen_op}")
     elif op == 5:
         chosen_op = (average(sums(num1, num2)))
         print(f"Both numbers average is: {chosen_op}")
