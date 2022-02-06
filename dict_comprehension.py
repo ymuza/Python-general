@@ -7,19 +7,19 @@ num2 = float(input())
 
 
 def sums(a, b):
-    return a+b
+    return a + b
 
 
 def substract(a, b):
-    return a-b
+    return a - b
 
 
 def divide(a, b):
-    return a/b
+    return a / b
 
 
 def multiply(a, b):
-    return a*b
+    return a * b
 
 
 op = int(input("select an operation (1-sum, 2-subst, 3-divide, 4-multip): "))
