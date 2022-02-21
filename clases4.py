@@ -1,10 +1,10 @@
 class Cars:
 
-    def __init__(self, make: str, year: int, engine: str, km: int):
-        self.make = make
-        self.year = year
-        self.engine = engine
-        self.km = km
+    def __init__(self, vehicle_info):
+        self.make = vehicle_info[0]
+        self.year = vehicle_info[1]
+        self.engine = vehicle_info[2]
+        self.km = vehicle_info[3]
         self.serv = False
 
     def service(self) -> bool:
@@ -28,10 +28,13 @@ class Cars:
             print("The car doesn't pay taxes.")
 
 
-c = Cars((input("type the maker: ")),
-         int((input("type the year: "))),
-         input("type engine model: "),
-         int((input("type amount of kms: "))))
+maker: str = input("Type the maker: ")
+year: int = int(input("type the year: "))
+engine_model: str = input("type engine model: ")
+km: int = int(input("type amount of kms: "))
+
+VehicleInfo = [maker, year, engine_model, km]
+c = Cars(VehicleInfo)
 
 c.service()
 c.usage()

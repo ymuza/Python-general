@@ -23,6 +23,7 @@ def divi(num1, num2):
     except ZeroDivisionError as e:
         print("There's an error:", e)
 
+
 def average(sums):
     return sums / 2
 

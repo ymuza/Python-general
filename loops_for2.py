@@ -28,3 +28,7 @@ for key, value in my_dictionary.items():  # recorre todas las keys de mi_diction
     print(f"key is:{key}, and value is {value}")
 
 print("\n")
+
+
+for x in range(20, 23, 5):  # recorre el rango entre 20 y 23, de a 5. Como se pasa el resultado es 20
+    print(x)
