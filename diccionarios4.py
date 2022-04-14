@@ -24,3 +24,5 @@ my_dict3 = {'weight': '80 kgs', 'shoe size': '13 us'}
 my_dict2['weight'] = my_dict3['weight']
 
 print(my_dict2)
+
+

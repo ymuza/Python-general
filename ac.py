@@ -7,3 +7,6 @@ obj = urlparse(url)
 print(obj.hostname)
 print(obj.geturl())
 print(obj.path)
+
+
+
