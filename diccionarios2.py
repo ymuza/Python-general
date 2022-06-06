@@ -19,10 +19,10 @@ phone_book2 = {
 }
 
 
-print(my_dictionary1['course']) #imprime el dato del elemento 'course', en este caso 'python'
+print(my_dictionary1['course'])  # imprime el dato del elemento 'course', en este caso 'python'
 print("\n")
 print(phone_book['alhazen'])
 print("\n")
 print(phone_book2['mathematicians']['david'])
 print("\n")
-print(phone_book2.get('mathematicians'))  #trae los valores de 'mathematicians' con el 'get'
+print(phone_book2.get('mathematicians'))  # trae los valores de 'mathematicians' con el 'get'
