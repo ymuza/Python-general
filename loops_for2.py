@@ -32,3 +32,20 @@ print("\n")
 
 for x in range(20, 23, 5):  # recorre el rango entre 20 y 23, de a 5. Como se pasa el resultado es 20
     print(x)
+
+
+print(" ")
+
+print(" ")
+start = 25
+end = 50
+for num in range(start, end + 1):
+    if num > 1:
+        for i in range(2, num):
+            if num % 2 != 0:
+                print(i)
+
+
+
+
+
