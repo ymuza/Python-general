@@ -12,8 +12,7 @@
 - sort an array
 """
 array = [1, 2, 3, 4, 5]
-
-
+# COMPLETAR!!!!!!
 # O(n) time complexity (linear time complexity) , where n is the number of elements in te array
 for i in range(len(array)):
     print("num:", array[i])
