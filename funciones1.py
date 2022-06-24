@@ -1,3 +1,4 @@
+
 print("type the first number: ")
 num1 = float(input())
 
