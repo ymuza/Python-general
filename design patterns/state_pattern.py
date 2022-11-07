@@ -14,23 +14,9 @@ class TurnedOn(InternalState):
 
 
 class TurnedOff(InternalState):
-	def change_state(self):
-		print("Turning OFF the device!!!")
-		return "OFF"
-
-
-
-class IncreaseVolume(InternalState):
-	def change_state(self):
-		print("Increasing volume by 10 !!!")
-		return "+10"
-
-
-class DecreaseVolume(InternalState):
-	def change_state(self):
-		print("Decreasing volume by 10 !!!")
-		return "-10"
-
+    def change_state(self):
+        print("Turning OFF the device!!!")
+        return "OFF"
 
 
 class RadioStation(InternalState):
@@ -45,7 +31,6 @@ class RadioStation(InternalState):
 
 	def change_state(self):
 		self.state = self.state.change_state()
-
 
 
 Radio = RadioStation()
