@@ -1,22 +1,31 @@
-from abc import abstractmethod, ABC
+from abc import abstractmethod, ABCMeta
 
-
-class InternalState(ABC):
+class InternalState(metaclass = ABCMeta):
 	@abstractmethod
 	def change_state(self):
 		pass
-
 
 class TurnedOn(InternalState):
 	def change_state(self):
 		print("Turning ON the device!!!")
 		return "ON"
 
-
 class TurnedOff(InternalState):
-    def change_state(self):
-        print("Turning OFF the device!!!")
-        return "OFF"
+	def change_state(self):
+		print("Turning OFF the device!!!")
+		return "OFF"
+
+
+class IncreaseVolume(InternalState):
+	def change_state(self):
+		print("Increasing volume by 10 !!!")
+		return "+10"
+
+class DecreaseVolume(InternalState):
+	def change_state(self):
+		print("Decreasing volume by 10 !!!")
+		return "-10"
+
 
 
 class RadioStation(InternalState):
@@ -31,7 +40,6 @@ class RadioStation(InternalState):
 
 	def change_state(self):
 		self.state = self.state.change_state()
-
 
 Radio = RadioStation()
 print('The radios internal state is currently: {}'.format(Radio.get_state()))
