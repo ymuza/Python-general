@@ -2,7 +2,6 @@
 Implement a recursive method to order a list
 """
 
-
 def order(list1, quantity):
     if quantity > 1:
         for f in range(0, quantity - 1):
