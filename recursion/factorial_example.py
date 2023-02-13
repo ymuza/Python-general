@@ -10,7 +10,9 @@
  . So , the factorial function (which would be the recursive case) is n! = n * (n-1)!"""
 
 def factorial(n):
-    assert 0 <= n == int(n), 'n must be a positive integer'  # this is the step 3, the unintentional constraint
+ if n < 0  or not isinstance(n, int):  # this is the step 3, the unintentional constraint
+     raise ValueError('n must be a positive integer')
+ else:
     if n in [0, 1]:  # this is the 2 step, the base case => the stopping criterion (0!=1, 1!=1)
         return 1
     else:

@@ -28,5 +28,18 @@ print("\n")
 """
 Generate a list with all multiple values of 8 between 1 and 500. 
 """
-multiples_of8 = [value for value in range(1, 501) if value % 8 == 0]
-print(multiples_of8)
+multiples_of_8 = [value for value in range(1, 501) if value % 8 == 0]
+print(multiples_of_8)
+
+"""
+Make odd numbers even by adding 1 to each of them
+"""
+def make_even(num):
+    if num%2==1:
+        return num+1
+    else:
+        return num
+
+x = [551, 145, 323, 457, 789]
+
+y = [make_even(num) for num in x]
