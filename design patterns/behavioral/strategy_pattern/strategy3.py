@@ -10,7 +10,7 @@ these changes in an efficient way."""
 -----------------------------------
 Let’s see how can we solve the above-described problem in an efficient way. 
 We can create a specific class that will extract all the algorithms into separate 
-classes called Strategy. Out actual class should store the reference to one of the strategy class."""
+classes called Strategy. Out actual class should store the reference to one of the strategy_pattern class."""
 #######################################################################################################
 #######################################################################################################
 
@@ -22,7 +22,7 @@ class Item:
     """Constructor function with price and discount"""
 
     def __init__(self, price, discount_strategy=None):
-        """take price and discount strategy"""
+        """take price and discount strategy_pattern"""
         self.price = price
         self.discount_strategy = discount_strategy
 
@@ -61,8 +61,8 @@ def twenty_percent_discount(order):
 if __name__ == "__main__":
     print(Item(20000))
 
-    """with discount strategy as 20 % discount"""
+    """with discount strategy_pattern as 20 % discount"""
     print(Item(20000, discount_strategy=twenty_percent_discount))
 
-    """with discount strategy as On Sale Discount"""
+    """with discount strategy_pattern as On Sale Discount"""
     print(Item(20000, discount_strategy=on_sale_discount))
