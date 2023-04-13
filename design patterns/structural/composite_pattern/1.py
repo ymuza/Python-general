@@ -1,5 +1,4 @@
 
-
 """Composite pattern composes objects in terms of a tree structure to represent part as well as whole hierarchy.
 This type of design pattern comes under structural pattern as this pattern creates a tree structure of group of objects.
  This pattern creates a class that contains group of its own objects.
@@ -48,7 +47,7 @@ class Employees(Components):
 if __name__ == '__main__':
     company = Department("Springfield Nuclear Power Plant")
 
-    Department1 = Department("Nuclear Security")
+    Department1 = Department("Sector 7-G")
     Department2 = Department("Management")
 
     employee1 = Employees("Homer Simpson")
@@ -61,7 +60,7 @@ if __name__ == '__main__':
     Department1.add(employee2)
     Department1.add(employee3)
     Department2.add(employee4)
-    Department2.add(employee4)
+    Department2.add(employee5)
     company.add(Department1)
     company.add(Department2)
 
