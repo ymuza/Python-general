@@ -19,20 +19,24 @@ pdf.cell(200, 10, txt="Sales by Region and Product", ln=1, align="C")
 
 # Set the font and size for the table header
 pdf.set_font("Arial", size=12)
-pdf.cell(50, 10, txt="Region", border=1)
-pdf.cell(50, 10, txt="Product A", border=1)
-pdf.cell(50, 10, txt="Product B", border=1)
-pdf.cell(50, 10, txt="Product C", border=1)
+pdf.cell(50, 10, txt="Region", border=1, align="C")
+pdf.cell(50, 10, txt="Product A", border=1, align="C")
+pdf.cell(50, 10, txt="Product B", border=1, align="C")
+pdf.cell(50, 10, txt="Product C", border=1, align="C")
 pdf.ln()
 
 # Set the font and size for the table body
 pdf.set_font("Arial", size=10)
 for index, row in pivot_table.iterrows():
-    pdf.cell(50, 10, str(index), border=1)
-    pdf.cell(50, 10, str(row['Sales']['A']), border=1)
-    pdf.cell(50, 10, str(row['Sales']['B']), border=1)
-    pdf.cell(50, 10, str(row['Sales']['C']), border=1)
+    pdf.cell(50, 10, str(index), border=1, align="C")
+    pdf.cell(50, 10, str(row['Sales']['A']), border=1, align="C")
+    pdf.cell(50, 10, str(row['Sales']['B']), border=1, align="C")
+    pdf.cell(50, 10, str(row['Sales']['C']), border=1, align="C")
     pdf.ln()
 
+ # Draw a horizontal line
+pdf.line(10, pdf.get_y() + 10, 200, pdf.get_y() + 10)
 # Save the PDF report
 pdf.output("sales_report.pdf")
+
+
