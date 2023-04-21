@@ -17,3 +17,5 @@ html_out = template.render(**context)
 
 # Convert the HTML to PDF with WeasyPrint
 HTML(string=html_out).write_pdf('output.pdf')
+
+print("Hola Moises")
