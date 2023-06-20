@@ -1,6 +1,6 @@
 class Node:
- #  class represents each node in the doubly linked list. It has three attributes: data to store the value of the node,
- #  prev as a reference to the previous node, and next as a reference to the next node.
+    """ class represents each node in the doubly linked list. It has three attributes: data to store the value of the
+     node, prev as a reference to the previous node, and next as a reference to the next node."""
     def __init__(self, data):
         self.data = data
         self.previous = None
