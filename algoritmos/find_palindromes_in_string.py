@@ -1,26 +1,16 @@
 
-def find_palindromes_in_sub_string(any_input, j, k):
-  count = 0
-  while j >= 0 and k < len(any_input):
-    if any_input[j] != any_input[k]:
-      break
-    print(any_input[j: k + 1])
-    count += 1
-
-    j -= 1
-    k += 1
-
-  return count
+def is_palindrome(s):
+    s = s.lower()  # Convert to lowercase for case-insensitive comparison
+    for i in range(len(s)):
+        for j in range(i + 1, len(s) + 1):
+            substring = s[i:j]
+            if substring == substring[::-1]:
+                return True
+    return False
 
 
-def find_all_palindrome_substrings(any_input):
-  count = 0
-  for i in range(0, len(any_input)):
-    count += find_palindromes_in_sub_string(any_input, i - 1, i + 1)
-    count += find_palindromes_in_sub_string(any_input, i, i + 1)
-
- # return count
-
-
-s = "aabbbaa"
-#print("Total palindrome substrings: ", find_all_palindrome_substrings(s))
+# Example usage
+input_string = "racecfar and aca are a palindrome"
+result = is_palindrome(input_string)
+print(f"Is there a palindrome in the input string? {result}")
+#print(f"if so, how many? {}")
