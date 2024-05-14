@@ -66,6 +66,17 @@ def fibonacci_series(n):
             print(next_number)
 
 
+def remove_element_by_position(position, char_list):
+    if position < 0 or position >= len(char_list):
+        print("invalid position")
+        return char_list
+    else:
+        char_to_remove = ''.join(char_list[position:position + 1])
+        if char_to_remove in char_list:
+            char_list.remove(char_to_remove)
+        print(char_list)
+
+
 choice = int(input("choose an algorithm: "))
 
 if choice == 1:
@@ -87,3 +98,8 @@ elif choice == 5:
 
 elif choice == 6:
     fibonacci_series(10)
+
+elif choice == 7:
+    character_list = ['a', 'b', 'c', 'd']
+    pos = 1
+    remove_element_by_position(pos, character_list)
