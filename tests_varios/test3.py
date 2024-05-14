@@ -1,19 +1,16 @@
 
-list1 = [1 ,2 ,3 ,4 ,5 ,6]
+chars = ["a", "b", "a"]
+
+repeated = set(chars)
+seen_chars = set()
+for i in chars:
+    if i in seen_chars:
+        repeated.add(i)
+    else:
+        seen_chars.add(i)
 
 
-first_element = list1[0]
-
-list1[0] = list1[-1]
-
-list1[-1] = first_element
-
-
-print(list1)
-
-
-
-
+print(repeated)
 
     
     
