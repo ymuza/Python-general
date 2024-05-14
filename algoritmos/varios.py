@@ -77,6 +77,20 @@ def remove_element_by_position(position, char_list):
         print(char_list)
 
 
+def duplicates_in_list(element_list):
+    seen = []
+    duplicates = []
+
+    for i in element_list:
+        if i not in seen:
+            seen.append(i)
+        else:
+            duplicates.append(i)
+
+    print("list: ", element_list)
+    print("duplicates", duplicates)
+
+
 choice = int(input("choose an algorithm: "))
 
 if choice == 1:
@@ -103,3 +117,7 @@ elif choice == 7:
     character_list = ['a', 'b', 'c', 'd']
     pos = 1
     remove_element_by_position(pos, character_list)
+
+elif choice == 8:
+    original_list = ['a', 'b', 2, 3, 4, 2]
+    duplicates_in_list(original_list)
