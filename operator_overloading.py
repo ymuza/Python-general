@@ -29,19 +29,19 @@ class Student:
 s1 = Student(58, 69)
 s2 = Student(60, 65)
 
-s3 = s1 + s2  # es lo mismo que hacer => Student.__add__(s1, s2) ,  donde s1 es 'self', y s2 es 'other'
+sum3 = s1 + s2  # es lo mismo que hacer => Student.__add__(s1, s2) ,  donde s1 es 'self', y s2 es 'other'
 
-s4 = s1 * s2
+sum4 = s1 * s2
 
 print("suma")
-print(s3.m1)
-print(s3.m2)
+print(sum3.m1)
+print(sum3.m2)
 
 print("\n")
 
 print("multiplicación")
-print(s4.m1)
-print(s4.m2)
+print(sum4.m1)
+print(sum4.m2)
 
 if s1 > s2:
     print("s1 es mayor")

@@ -1,23 +1,34 @@
-
 class RoboDog:
+    def __init__(self):
+        pass
+
     @staticmethod
     def bark():
         print('woof!')
 
 
 class RoboCat:
+    def __init__(self):
+        pass
+
     @staticmethod
     def meow():
         print('meow')
 
 
 class Robot:
+    def __init__(self):
+        pass
+
     @staticmethod
     def move():
         print('ah...mobility')
 
 
 class CleanRobot:
+    def __init__(self):
+        pass
+
     @staticmethod
     def clean():
         print("I clean ")
@@ -52,3 +63,5 @@ class Superbot:  # esta clase contiene 4 objetos.
 henry = Superbot()  # creo el superbot henry , y abajo le asigno las funciones
 henry.move()
 henry.clean()
+henry.play_game()
+
