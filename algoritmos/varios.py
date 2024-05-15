@@ -53,6 +53,7 @@ def fizzbuzz(n):
 
 
 def fibonacci_series(n):
+    """writes fibonacci series up until n """
     if n <= 0:
         print(f"the series is: {n}")
     else:
@@ -67,6 +68,7 @@ def fibonacci_series(n):
 
 
 def remove_element_by_position(position, char_list):
+    """removes the element in certain position"""
     if position < 0 or position >= len(char_list):
         print("invalid position")
         return char_list
@@ -78,6 +80,7 @@ def remove_element_by_position(position, char_list):
 
 
 def duplicates_in_list(element_list):
+    """removes the duplicates in a list"""
     seen = []
     duplicates = []
 
@@ -91,6 +94,25 @@ def duplicates_in_list(element_list):
     print("duplicates", duplicates)
 
 
+def longest_substring_without_repeating(string):
+    """"""
+    if not string:
+        return 0
+    max_length = 0
+    start = 0
+    char_index_map = {}
+
+
+print("1 - check if palindrome")
+print("2 - calculate factorial")
+print("3 - find_max")
+print("4 - binary search")
+print("5 - fizzbuzz")
+print("6 - fibonacci series")
+print("7 - remove element by position")
+print("8 - find duplicated items in list")
+print("9 - find longest substring that doesn't repeat")
+print("_______________________________________________")
 choice = int(input("choose an algorithm: "))
 
 if choice == 1:
