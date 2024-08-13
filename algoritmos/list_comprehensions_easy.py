@@ -18,6 +18,3 @@ lst2 = [i**2 for i in lst1 if i**2 > 50]
 print(lst2)
 
 
-""""""
-
-

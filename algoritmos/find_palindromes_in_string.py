@@ -10,7 +10,7 @@ def is_palindrome(s):
 
 
 # Example usage
-input_string = "racecfar and aca are a palindrome"
+input_string = "racecar and aca are a palindrome"
 result = is_palindrome(input_string)
 print(f"Is there a palindrome in the input string? {result}")
 #print(f"if so, how many? {}")

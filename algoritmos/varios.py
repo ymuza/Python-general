@@ -80,7 +80,7 @@ def remove_element_by_position(position, char_list):
 
 
 def duplicates_in_list(element_list):
-    """removes the duplicates in a list"""
+    """add the duplicates on a new list"""
     seen = []
     duplicates = []
 
@@ -91,7 +91,9 @@ def duplicates_in_list(element_list):
             duplicates.append(i)
 
     print("list: ", element_list)
-    print("duplicates", duplicates)
+
+    print("duplicates:", ','.join(map(str, duplicates)))
+
 
 
 def longest_substring_without_repeating(string):
@@ -103,43 +105,49 @@ def longest_substring_without_repeating(string):
     char_index_map = {}
 
 
-print("1 - check if palindrome")
-print("2 - calculate factorial")
-print("3 - find_max")
-print("4 - binary search")
-print("5 - fizzbuzz")
-print("6 - fibonacci series")
-print("7 - remove element by position")
-print("8 - find duplicated items in list")
-print("9 - find longest substring that doesn't repeat")
-print("_______________________________________________")
-choice = int(input("choose an algorithm: "))
+def main():
 
-if choice == 1:
-    print(is_palindrome("radar"))
+    print("1 - check if palindrome")
+    print("2 - calculate factorial")
+    print("3 - find_max")
+    print("4 - binary search")
+    print("5 - fizzbuzz")
+    print("6 - fibonacci series")
+    print("7 - remove element by position")
+    print("8 - find duplicated items in list")
+    print("9 - find longest substring that doesn't repeat")
+    print("_______________________________________________")
+    choice = int(input("choose an algorithm: "))
 
-elif choice == 2:
-    print(factorial(5))
+    if choice == 1:
+        print(is_palindrome("radar"))
 
-elif choice == 3:
-    print(find_max([1, 5, 3, 9, 2]))
+    elif choice == 2:
+        print(factorial(5))
 
-elif choice == 4:
-    test_list = [2, 3, 4, 10, 40]
-    target_number = 10
-    print(binary_search(test_list, target_number))
+    elif choice == 3:
+        print(find_max([1, 5, 3, 9, 2]))
 
-elif choice == 5:
-    print(fizzbuzz(15))
+    elif choice == 4:
+        test_list = [2, 3, 4, 10, 40]
+        target_number = 10
+        print(binary_search(test_list, target_number))
 
-elif choice == 6:
-    fibonacci_series(10)
+    elif choice == 5:
+        print(fizzbuzz(15))
 
-elif choice == 7:
-    character_list = ['a', 'b', 'c', 'd']
-    pos = 1
-    remove_element_by_position(pos, character_list)
+    elif choice == 6:
+        fibonacci_series(10)
 
-elif choice == 8:
-    original_list = ['a', 'b', 2, 3, 4, 2]
-    duplicates_in_list(original_list)
+    elif choice == 7:
+        character_list = ['a', 'b', 'c', 'd']
+        pos = 1
+        remove_element_by_position(pos, character_list)
+
+    elif choice == 8:
+        original_list = ['a', 'b', 2, 3, 4, 2]
+        duplicates_in_list(original_list)
+
+
+main()
+

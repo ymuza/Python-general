@@ -4,8 +4,8 @@
 def bs(lista):  # a = name of list
     b = len(lista) - 1  # minus 1 because we always compare 2 adjacent values
 
-    for x in range(b):
-        for y in range(b - x):
+    for i in range(b):
+        for y in range(b - i):
             if lista[y] > lista[y + 1]:
                 lista[y], lista[y + 1] = lista[y + 1], lista[y]
     return a
