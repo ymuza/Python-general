@@ -170,6 +170,24 @@ def zeroes_to_the_end():
     print(list1)
 
 
+def are_anagrams(word1, word2):
+    """Check if two words are anagrams (case-insensitive). """
+
+    word1 = word1.replace(" ", "").lower()
+    word2 = word2.replace(" ", "").lower()
+
+    if len(word1) != len(word2):
+        return False
+
+    return sorted(word1) == sorted(word2)
+
+
+# Example usage:
+
+  # True (with spaces)
+
+
+
 def main():
     print("1 - Check if palindrome")
     print("2 - Calculate factorial")
@@ -184,7 +202,7 @@ def main():
     print("11 - check if a number is prime")
     print("12 - Primes to the front of the list")
     print("13 - Move zeroes to the end")
-    print("14 - ")
+    print("14 - Check if two words are anagrams")
     print("_______________________________________________")
 
     try:
@@ -246,6 +264,9 @@ def main():
 
         case 13:
             zeroes_to_the_end()
+
+        case 14:
+            print(are_anagrams("listen", "silent"))
 
         case _:
                 print("Invalid choice.")

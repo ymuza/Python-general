@@ -1,0 +1,15 @@
+[project]
+name = "python-general"
+version = "0.1.0"
+description = "Add your description here"
+requires-python = ">=3.12"
+dependencies = [
+    "boto3>=1.38.33",
+    "glue-utils>=0.11.1",
+    "oso>=0.27.3",
+    "pandas>=2.2.3",
+    "polar>=0.0.127",
+    "psycopg2>=2.9.10",
+    "pyspark>=4.0.0",
+    "sqlalchemy>=2.0.41",
+]

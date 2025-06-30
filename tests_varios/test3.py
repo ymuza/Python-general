@@ -1,67 +1,61 @@
-matrix0 = [
-    [1, 2, 3],
-    [4, 5, 6]
-]
+def two_sum(nums, target):
+    """Given a list of integers and a target,
+       return the indices of the two numbers that add up to the target."""
+    seen = {}
+
+    for i, num in enumerate(nums):
+        diff = target - num
+        if diff in seen:
+            return [seen[diff], i]
+        seen[num] = i
+    return ""
 
 
-def create_matrix(rows, cols):
-    """Create a matrix with given dimensions filled with user input."""
-    matrix = []
-    for i in range(rows):
-        row = []
-        for j in range(cols):
-            value = int(input(f"Enter value for matrix[{i}][{j}]: "))
-            row.append(value)
-        matrix.append(row)
-    return matrix
+def find_missing(nums):
+    """Given a list of numbers from 1 to N with one number missing,
+     find the missing number."""
+    n = len(nums) + 1
+    total = n * (n + 1) // 2
+    print(n*(n+1))
+    return total - sum(nums)
 
 
-def print_matrix(matrix):
-    """Prints the matrix in a readable format."""
-    for row in matrix:
-        print(" ".join(map(str, row)))
+
+def flatten_list(list1):
+    flat_list = []
+    for item in list1:
+        if isinstance(item, list):
+            flat_list.extend(item)
+        else:
+            flat_list.append(item)
+    print(flat_list)
 
 
-rows = 3
-cols = 3
 
 
-#matrix1 = create_matrix(rows, cols)
+def flatten_generator(nested_list):
+    for item in nested_list:
+        if isinstance(item, list):
+            # If it's a list, yield from the recursive call
+            yield from flatten_generator(item)
+        else:
+            # If it's not a list, yield the item
+            yield item
 
 
-def new_matrix(r, c):
-    matrix = []
-    for i in range(0, r):
-        row = []
-        for j in range(0, c):
-            value = int(input(f"add the values for matrix of [{i}][{j}]: "))
-            row.append(value)
-        matrix.append(row)
 
-    print(matrix)
+# Example usage:
+my_list = [1, [2, 3], 4, [5, [6, 7, [8]], 9], 10]
+flattened_generator = list(flatten_generator(my_list)) # Convert generator to list for printing
+print(flattened_generator) # Output: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
 
-#new_matrix(3, 3)
 
 
-def get_diagonals(matrix):
-    """Calculate and return the main and anti-diagonals of the matrix."""
-    main_diagonal = []
-    anti_diagonal = []
-    rows = len(matrix)
-    cols = len(matrix[0])
+#print(find_missing([1, 2, 4, 5, 6]))  # Output: 3
 
-    for i in range(min(rows, cols)):
-        main_diagonal.append(matrix[i][i])
-        print(main_diagonal)
-        anti_diagonal.append(matrix[i][cols - 1 - i])
+#print(two_sum([23, 1, 4, 55, 45, 60], 100))
 
-    return main_diagonal, anti_diagonal
+print(flatten_list([[3, 2, 2], 3, 5, [6, 8, 10]]))
 
 
-matrix3 = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
-
-main_diagonal, anti_diagonal = get_diagonals(matrix3)
-
-print("Main Diagonal:", main_diagonal)
-print("Anti Diagonal:", anti_diagonal)

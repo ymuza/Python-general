@@ -76,13 +76,7 @@ def zeroes_to_the_end():
 
 
 
-def remove_element_by_position(position):
 
-    list1 = ("a", 2, "dfff", 23, 44, 22, "jk", "vb")
-    pos = position
-
-    for i in range(len(list1)):
-        if list1[i] == list1[pos]:
              
 
 
