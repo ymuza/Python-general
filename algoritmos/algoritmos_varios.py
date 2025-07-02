@@ -1,3 +1,6 @@
+from collections import Counter
+
+
 def is_palindrome(s):
     """checks if a string is a palindrome"""
     return s == s[::-1]
@@ -182,10 +185,73 @@ def are_anagrams(word1, word2):
     return sorted(word1) == sorted(word2)
 
 
-# Example usage:
 
-  # True (with spaces)
 
+def count_vowels(random_string):
+    """Count the number of vowels (a, e, i, o, u) in a given string (case-insensitive)."""
+    random_string = random_string.lower()
+    vowel_counter = 0
+    vowels = ["a", "e", "i", "o", "u"]
+    for character in random_string:
+        if character in vowels:
+            vowel_counter += 1
+
+    return vowel_counter
+
+
+def compress_string(input_string):
+    """
+    Compresses a string by replacing repeated characters with counts. Example: "aaabbbcc" -> "a3b3c2"
+    """
+    if not input_string:  # Handle empty string case
+        return ""
+
+    compressed_parts = []
+    current_char = input_string[0]
+    current_count = 0
+
+    for char in input_string:
+        if char == current_char:
+            current_count += 1
+        else:
+            # Append the previous character and its count
+            compressed_parts.append(current_char)
+            compressed_parts.append(str(current_count))
+
+            # Reset for the new character
+            current_char = char
+            current_count = 1
+
+    # Append the last character and its count after the loop finishes
+    compressed_parts.append(current_char)
+    compressed_parts.append(str(current_count))
+
+    return "".join(compressed_parts)
+
+
+def sum_all_elements_of_a_list(list1):
+    counter = 0
+
+    for num in list1:
+        counter = counter + num
+
+    return counter
+
+
+def move_specific_element_to_the_end(number):
+    """Move Specific Element to the End. If element is 3, Output should be: [1, 2, 4, 3, 3, 3]"""
+    list1 = [5, 3, 43, 2, 4, 19]
+    if number not in list1:
+        print("the number is not on the list.")
+
+
+    for i in range (len(list1)):
+        if list1[i] == number:
+            temp = list1[-1]
+            list1[-1] = list1[i]
+            list1[i] = temp
+
+    print(list1)
 
 
 def main():
@@ -199,10 +265,14 @@ def main():
     print("8 - Find duplicated items in list")
     print("9 - Find longest substring without repeating characters")
     print("10 - Two sum")
-    print("11 - check if a number is prime")
+    print("11 - Check if a number is prime")
     print("12 - Primes to the front of the list")
     print("13 - Move zeroes to the end")
     print("14 - Check if two words are anagrams")
+    print("15 - Count vowels in a string")
+    print("16 - Compress a string by numbering char occurrences")
+    print("17 - Sum all the elements of a list")
+    print("18 - Move a specific element to the end of the list")
     print("_______________________________________________")
 
     try:
@@ -267,6 +337,17 @@ def main():
 
         case 14:
             print(are_anagrams("listen", "silent"))
+
+        case 15:
+
+            print(count_vowels("onomatopeia"))
+
+        case 16:
+            print(compress_string("dfdfsgfghfghjrtrerwwwwwwqqqaaaee"))
+
+        case 17: print(sum_all_elements_of_a_list([1, 45, 4, 7, 2, 5]))
+
+        case 18: move_specific_element_to_the_end(43)
 
         case _:
                 print("Invalid choice.")
