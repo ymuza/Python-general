@@ -254,6 +254,28 @@ def move_specific_element_to_the_end(number):
     print(list1)
 
 
+
+def move_all_instances_of_an_element_to_the_end(number, numbers_list):
+    """Move all the instances of a Specific Element to the End."""
+    count = numbers_list.count(number)
+    filtered_list = [n for n in numbers_list if n != number]
+
+    return filtered_list + [number] * count
+
+
+def switch_elements(number1, number2, lst):
+    """Switch two Elements"""
+    try:
+        pos1 = lst.index(number1)
+        pos2 = lst.index(number2)
+        lst[pos1], lst[pos2] = lst[pos2], lst[pos1]  # Pythonic swap
+        return lst
+    except ValueError:
+        print(f"One or both elements not found in list")
+        return lst
+
+
+
 def main():
     print("1 - Check if palindrome")
     print("2 - Calculate factorial")
@@ -273,6 +295,8 @@ def main():
     print("16 - Compress a string by numbering char occurrences")
     print("17 - Sum all the elements of a list")
     print("18 - Move a specific element to the end of the list")
+    print("19 - Move all instances of an element to the end of the list")
+    print("20 - Switch two elements of a list")
     print("_______________________________________________")
 
     try:
@@ -345,9 +369,17 @@ def main():
         case 16:
             print(compress_string("dfdfsgfghfghjrtrerwwwwwwqqqaaaee"))
 
-        case 17: print(sum_all_elements_of_a_list([1, 45, 4, 7, 2, 5]))
+        case 17:
+            print(sum_all_elements_of_a_list([1, 45, 4, 7, 2, 5]))
 
-        case 18: move_specific_element_to_the_end(43)
+        case 18:
+            move_specific_element_to_the_end(43)
+
+        case 19:
+            move_all_instances_of_an_element_to_the_end(2,[2, 4, 10, 99, 2, 2, 13])
+
+        case 20:
+            print(switch_elements(7, 10, [1, 12, 5, 4, 7, 20, 18, 10, 15]))
 
         case _:
                 print("Invalid choice.")
