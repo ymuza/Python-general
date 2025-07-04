@@ -20,19 +20,32 @@
 
 
 
-def switch_elements(number1, number2, lst):
-    """Switch two Elements"""
-    try:
-        pos1 = lst.index(number1)
-        pos2 = lst.index(number2)
-        lst[pos1], lst[pos2] = lst[pos2], lst[pos1]
-        return lst
-    except ValueError:
-        print(f"One or both elements not found in list")
-        return lst
+def zeroes_to_the_end():
+    """move 0 to the end of the list"""
+    list1 = [10, 0, 20, 0, 40, 60]
+    pos = 0
+    for v in list1:
+        if v != 0:
+            list1[pos] = v
+            pos += 1
+
+    while pos < len(list1):
+        list1[pos] = 0
+        pos += 1
+    return list1
 
 
 
 
-l = [10, 5 ,4 , 1, 8, 9, 22, 11, 19]
-print((switch_elements(9, 19, l)))
+
+
+
+
+
+
+
+
+
+
+
+print(zeroes_to_the_end())

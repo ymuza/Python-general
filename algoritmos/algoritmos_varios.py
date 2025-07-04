@@ -82,6 +82,7 @@ def remove_element_by_position(position, char_list):
         print(char_list)
     return char_list
 
+
 def duplicates_in_list(element_list):
     """add the duplicates on a new list"""
     seen = []
@@ -96,7 +97,6 @@ def duplicates_in_list(element_list):
     print("list: ", element_list)
 
     print("duplicates:", ','.join(map(str, duplicates)))
-
 
 
 def longest_unique_substring(string):
@@ -162,10 +162,10 @@ def zeroes_to_the_end():
     list1 = [10, 0, 20, 0, 40, 60]
 
     position = 0
-    for i in list1:
-        if i != 0:
-            list1[position] = i
-            position += 1
+    for v in list1:
+        if v != 0:
+            list1[position] = v
+            position += 1 # the pointer only moves when v is not 0
 
     while position < len(list1):
         list1[position] = 0
@@ -251,7 +251,7 @@ def move_specific_element_to_the_end(number):
             list1[-1] = list1[i]
             list1[i] = temp
 
-    print(list1)
+    return list1
 
 
 
@@ -276,6 +276,9 @@ def switch_elements(number1, number2, lst):
 
 
 
+
+
+
 def main():
     print("1 - Check if palindrome")
     print("2 - Calculate factorial")
@@ -297,6 +300,7 @@ def main():
     print("18 - Move a specific element to the end of the list")
     print("19 - Move all instances of an element to the end of the list")
     print("20 - Switch two elements of a list")
+    print("21 - ")
     print("_______________________________________________")
 
     try:
