@@ -275,6 +275,19 @@ def switch_elements(number1, number2, lst):
         return lst
 
 
+def flatten_list(list1):
+    flat_list = []
+    for item in list1:
+        if isinstance(item, list):
+            flat_list.extend(flatten_list(item))
+        else:
+            flat_list.append(item)
+
+    return flat_list
+
+
+
+
 
 
 
@@ -300,7 +313,7 @@ def main():
     print("18 - Move a specific element to the end of the list")
     print("19 - Move all instances of an element to the end of the list")
     print("20 - Switch two elements of a list")
-    print("21 - ")
+    print("21 - Flatten a list")
     print("_______________________________________________")
 
     try:
@@ -384,6 +397,9 @@ def main():
 
         case 20:
             print(switch_elements(7, 10, [1, 12, 5, 4, 7, 20, 18, 10, 15]))
+
+        case 21:
+            print(flatten_list([[3, 6, 7, 1, 10, 0, [56, [32, 12, 5]], 66, 88]]))
 
         case _:
                 print("Invalid choice.")

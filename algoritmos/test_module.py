@@ -1,5 +1,7 @@
 # ESTE MÓDULO ES PARA PRACTICAR, NADA MÁS
+from nltk.sem.chat80 import country
 
+#
 # def move_specific_element_to_the_end(number, lst):
 #     """Move Specific Element to the End. If element is 3, Output should be: [1, 2, 4, 3, 3, 3]"""
 #
@@ -19,33 +21,25 @@
 # (move_specific_element_to_the_end(4, l))
 
 
-
-def zeroes_to_the_end():
-    """move 0 to the end of the list"""
-    list1 = [10, 0, 20, 0, 40, 60]
-    pos = 0
-    for v in list1:
-        if v != 0:
-            list1[pos] = v
-            pos += 1
-
-    while pos < len(list1):
-        list1[pos] = 0
-        pos += 1
-    return list1
+# def move_all_instances_of_element_to_the_end(number, list1):
+#
+#     clean_list = [n for n in list1 if n != number]
+#     number_occurrences = list1.count(number)
+#
+#     return clean_list + [number] * number_occurrences
+#
+#
+#
+# print(move_all_instances_of_element_to_the_end(3, [3, 5, 6, 45, 3, 88, 99, 10, 4, 3]))
 
 
+def anagram_checker(w1, w2):
+
+    w1 = sorted(w1.replace(" ", "").lower())
+    w2 = sorted(w2.replace(" ", "").lower())
+
+    return w1 == w2
+
+print(anagram_checker("casa", "a   cas"))
 
 
-
-
-
-
-
-
-
-
-
-
-
-print(zeroes_to_the_end())
