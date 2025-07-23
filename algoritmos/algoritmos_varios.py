@@ -276,6 +276,7 @@ def switch_elements(number1, number2, lst):
 
 
 def flatten_list(list1):
+    """flattens a list by removing its nested lists"""
     flat_list = []
     for item in list1:
         if isinstance(item, list):
@@ -286,10 +287,25 @@ def flatten_list(list1):
     return flat_list
 
 
+def minimum_ocurrence(string1):
+    """returns the character that appears the least in the string."""
+    if not string1:
+        return ""
 
+    char_counts = {}
 
+    for char in string1:
+        if char not in char_counts:
+            char_counts[char] = 1
+        else:
+            char_counts[char] += 1
 
+    min_occurrence = min(char_counts.values())
 
+    for char in string1:
+        if char_counts[char] == min_occurrence:
+            return char
+    return None
 
 
 def main():
@@ -314,6 +330,7 @@ def main():
     print("19 - Move all instances of an element to the end of the list")
     print("20 - Switch two elements of a list")
     print("21 - Flatten a list")
+    print("22 - Minimum occurrence ")
     print("_______________________________________________")
 
     try:
@@ -400,6 +417,9 @@ def main():
 
         case 21:
             print(flatten_list([[3, 6, 7, 1, 10, 0, [56, [32, 12, 5]], 66, 88]]))
+
+        case 22:
+            print(minimum_ocurrence("dsdsddsffgggghhhjkk"))
 
         case _:
                 print("Invalid choice.")
