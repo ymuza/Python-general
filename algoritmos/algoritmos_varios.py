@@ -287,7 +287,7 @@ def flatten_list(list1):
     return flat_list
 
 
-def minimum_ocurrence(string1):
+def minimum_occurrence(string1):
     """returns the character that appears the least in the string."""
     if not string1:
         return ""
