@@ -398,7 +398,7 @@ def main():
 
         case 15:
 
-            print(count_vowels("onomatopeia"))
+            print(count_vowels("onomatopoeia"))
 
         case 16:
             print(compress_string("dfdfsgfghfghjrtrerwwwwwwqqqaaaee"))
@@ -410,7 +410,7 @@ def main():
             move_specific_element_to_the_end(43)
 
         case 19:
-            move_all_instances_of_an_element_to_the_end(2,[2, 4, 10, 99, 2, 2, 13])
+            print(move_all_instances_of_an_element_to_the_end(2,[2, 4, 10, 99, 2, 2, 13]))
 
         case 20:
             print(switch_elements(7, 10, [1, 12, 5, 4, 7, 20, 18, 10, 15]))
@@ -419,7 +419,7 @@ def main():
             print(flatten_list([[3, 6, 7, 1, 10, 0, [56, [32, 12, 5]], 66, 88]]))
 
         case 22:
-            print(minimum_ocurrence("dsdsddsffgggghhhjkk"))
+            print(minimum_occurrence("dsdsddsffgggghhhjkk"))
 
         case _:
                 print("Invalid choice.")
