@@ -1,18 +1,24 @@
+from collections import Counter
 
+deliveries = [
+    {"courier": "DHL", "origin": "Berlin", "destination": "Munich"},
+    {"courier": "DHL", "origin": "Berlin", "destination": "Munich"},
+    {"courier": "DHL", "origin": "Berlin", "destination": "Hamburg"},
+    {"courier": "UPS", "origin": "Paris", "destination": "Lyon"},
+    {"courier": "UPS", "origin": "Paris", "destination": "Lyon"},
+    {"courier": "UPS", "origin": "Paris", "destination": "Nice"},
+    {"courier": "FedEx", "origin": "Rome", "destination": "Milan"},
+    {"courier": "FedEx", "origin": "Rome", "destination": "Milan"},
+    {"courier": "FedEx", "origin": "Rome", "destination": "Milan"},
+    {"courier": "FedEx", "origin": "Naples", "destination": "Turin"},
+]
 
-def remove_element_by_position(position, char_list):
+# Step 1: Count (courier, origin, destination) tuples
+counter = Counter((d["courier"], d["origin"], d["destination"]) for d in deliveries)
 
+# Step 2: Organize into final structure
+result = {}
+for (courier, origin, destination), count in counter.items():
+    result.setdefault(courier, {})[(origin, destination)] = count
 
-
-
-
-
-
-
-
-
-
-
-
-
-remove_element_by_position(8, [1,23 ,"s" ,2 , "p",  8, 10, 20])
+print(result)

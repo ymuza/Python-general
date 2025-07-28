@@ -39,6 +39,7 @@ def binary_search(array, target):
     return -1
 
 
+
 def fizzbuzz(n):
     """function to print numbers from 1 to n,
     but for multiples of 3 print "Fizz" instead of the number,
@@ -53,6 +54,7 @@ def fizzbuzz(n):
             print("Buzz")
         else:
             print(i)
+
 
 
 def fibonacci_series(n):
@@ -70,6 +72,7 @@ def fibonacci_series(n):
             print(next_number)
 
 
+
 def remove_element_by_position(position, char_list):
     """removes the element in certain position"""
     if position < 0 or position >= len(char_list):
@@ -81,6 +84,7 @@ def remove_element_by_position(position, char_list):
             char_list.remove(char_to_remove)
         print(char_list)
     return char_list
+
 
 
 def duplicates_in_list(element_list):
@@ -97,6 +101,7 @@ def duplicates_in_list(element_list):
     print("list: ", element_list)
 
     print("duplicates:", ','.join(map(str, duplicates)))
+
 
 
 def longest_unique_substring(string):
@@ -123,6 +128,8 @@ def two_sum(nums, t):
             return [seen[diff], i]
         seen[num] = i
     return ""
+
+
 
 def is_prime(n):
     """Check if a number is prime"""
@@ -156,6 +163,7 @@ def primes_to_the_front():
     return primes + non_primes
 
 
+
 def zeroes_to_the_end():
     """move 0 to the end of the list"""
 
@@ -173,6 +181,7 @@ def zeroes_to_the_end():
     print(list1)
 
 
+
 def are_anagrams(word1, word2):
     """Check if two words are anagrams (case-insensitive). """
 
@@ -186,7 +195,6 @@ def are_anagrams(word1, word2):
 
 
 
-
 def count_vowels(random_string):
     """Count the number of vowels (a, e, i, o, u) in a given string (case-insensitive)."""
     random_string = random_string.lower()
@@ -197,6 +205,7 @@ def count_vowels(random_string):
             vowel_counter += 1
 
     return vowel_counter
+
 
 
 def compress_string(input_string):
@@ -308,6 +317,23 @@ def minimum_occurrence(string1):
     return None
 
 
+
+def courier_delivery_routes(deliveries):
+    """result.setdefault(courier, {}) means:
+    If courier exists in result, return result[courier].
+    If not, insert courier: {} into result, and return the empty dict.
+Then you do [(origin, destination)] = count on that returned dictionary."""
+
+    counter = Counter((d["courier"], d["origin"], d["destination"]) for d in deliveries)
+    # Step 2: Organize into final structure
+    result = {}
+    for (courier, origin, destination), count in counter.items():
+        result.setdefault(courier, {})[(origin, destination)] = count
+
+    return result
+
+
+
 def main():
     print("1 - Check if palindrome")
     print("2 - Calculate factorial")
@@ -331,6 +357,7 @@ def main():
     print("20 - Switch two elements of a list")
     print("21 - Flatten a list")
     print("22 - Minimum occurrence ")
+    print("23 - Courier delivery routes ")
     print("_______________________________________________")
 
     try:
@@ -420,6 +447,22 @@ def main():
 
         case 22:
             print(minimum_occurrence("dsdsddsffgggghhhjkk"))
+
+
+        case 23:
+            deliveries = [
+                {"courier": "DHL", "origin": "Berlin", "destination": "Munich"},
+                {"courier": "DHL", "origin": "Berlin", "destination": "Munich"},
+                {"courier": "DHL", "origin": "Berlin", "destination": "Hamburg"},
+                {"courier": "UPS", "origin": "Paris", "destination": "Lyon"},
+                {"courier": "UPS", "origin": "Paris", "destination": "Lyon"},
+                {"courier": "UPS", "origin": "Paris", "destination": "Nice"},
+                {"courier": "FedEx", "origin": "Rome", "destination": "Milan"},
+                {"courier": "FedEx", "origin": "Rome", "destination": "Milan"},
+                {"courier": "FedEx", "origin": "Rome", "destination": "Milan"},
+                {"courier": "FedEx", "origin": "Naples", "destination": "Turin"},
+            ]
+            print(courier_delivery_routes(deliveries))
 
         case _:
                 print("Invalid choice.")
