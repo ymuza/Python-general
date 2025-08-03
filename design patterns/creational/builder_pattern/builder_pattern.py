@@ -1,48 +1,62 @@
-"""Good pattern to use when we need to create very complex objects, with many optional parameters 
-or variations. In this pattern, the construction of an object is separated from its representation,
-allowing us to create different representations of the object, with the same construction
-process."""
 
 
-class RPGCharacter:
+
+class Pizza:
     def __init__(self):
-        self.__stats = None
-        self.__gender = None
-        self.__body = None
+        self.size = None
+        self.crust = None
+        self.toppings = []
+        self.cheese = None
 
-    def set_stats(self, stats):
-        self.__stats = stats
-
-    def set_gender(self, gender):
-        self.__gender = gender
-
-    def set_body(self, body):
-        self.__body = body
+    def __str__(self):
+        return f"{self.size} {self.crust} pizza with {self.cheese} cheese and toppings: {', '.join(self.toppings)}"
 
 
-class RPGCharacterBuilder:
+class PizzaBuilder:
     def __init__(self):
-        self.__rpg_character = RPGCharacter()
+        self.pizza = Pizza()
 
-    def set_stats(self, value):
-        self.__rpg_character.set_stats(value)
+    def size(self, size):
+        self.pizza.size = size
+        return self  # Return self to enable method chaining
+
+    def crust(self, crust):
+        self.pizza.crust = crust
         return self
 
-    def set_gender(self, value):
-        self.__rpg_character.set_gender(value)
+    def add_topping(self, topping):
+        self.pizza.toppings.append(topping)
         return self
 
-    def set_body(self, value):
-        self.__rpg_character.set_body(value)
+    def cheese(self, cheese):
+        self.pizza.cheese = cheese
         return self
 
-    def get_rpg_character(self):
-        return self.__rpg_character
+    def build(self):
+        return self.pizza
 
 
-builder = RPGCharacterBuilder()
-builder.set_stats({'inteligence': '9', 'strength': '7', 'dexterity': '8'})\
-       .set_gender('Male')\
-       .set_body({'height': '1.90 m', 'weight': '86 kg'})
+# Usage examples:
+builder = PizzaBuilder()
 
-rpg_character = builder.get_rpg_character()
+# Build a simple pizza
+pizza1 = (builder
+          .size("Large")
+          .crust("Thin")
+          .cheese("Mozzarella")
+          .add_topping("Pepperoni")
+          .build())
+
+# Build a different pizza with the same builder
+builder2 = PizzaBuilder()
+pizza2 = (builder2
+          .size("Medium")
+          .crust("Thick")
+          .cheese("Cheddar")
+          .add_topping("Mushrooms")
+          .add_topping("Bell Peppers")
+          .add_topping("Olives")
+          .build())
+
+print(pizza1)
+print(pizza2)

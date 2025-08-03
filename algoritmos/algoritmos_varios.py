@@ -1,4 +1,4 @@
-from collections import Counter
+from collections import Counter, defaultdict
 
 
 def is_palindrome(s):
@@ -114,7 +114,7 @@ def longest_unique_substring(string):
 
 
 
-def two_sum(nums, t):
+def two_sum(nums: list, t: int):
     """Given a list of integers and a target,
        return the indices of the two numbers that add up to the target."""
     seen = {}
@@ -182,7 +182,7 @@ def zeroes_to_the_end():
 
 
 
-def are_anagrams(word1, word2):
+def are_anagrams(word1: str, word2: str):
     """Check if two words are anagrams (case-insensitive). """
 
     word1 = word1.replace(" ", "").lower()
@@ -195,10 +195,10 @@ def are_anagrams(word1, word2):
 
 
 
-def count_vowels(random_string):
+def count_vowels(random_string: str):
     """Count the number of vowels (a, e, i, o, u) in a given string (case-insensitive)."""
-    random_string = random_string.lower()
-    vowel_counter = 0
+    random_string: str = random_string.lower()
+    vowel_counter: int = 0
     vowels = ["a", "e", "i", "o", "u"]
     for character in random_string:
         if character in vowels:
@@ -272,11 +272,11 @@ def move_all_instances_of_an_element_to_the_end(number, numbers_list):
     return filtered_list + [number] * count
 
 
-def switch_elements(number1, number2, lst):
+def switch_elements(number1: int, number2: int, lst: list):
     """Switch two Elements"""
     try:
-        pos1 = lst.index(number1)
-        pos2 = lst.index(number2)
+        pos1: int = lst.index(number1)
+        pos2: int = lst.index(number2)
         lst[pos1], lst[pos2] = lst[pos2], lst[pos1]  # Pythonic swap
         return lst
     except ValueError:
@@ -284,7 +284,7 @@ def switch_elements(number1, number2, lst):
         return lst
 
 
-def flatten_list(list1):
+def flatten_list(list1: list):
     """flattens a list by removing its nested lists"""
     flat_list = []
     for item in list1:
@@ -319,18 +319,17 @@ def minimum_occurrence(string1):
 
 
 def courier_delivery_routes(deliveries):
-    """result.setdefault(courier, {}) means:
-    If courier exists in result, return result[courier].
-    If not, insert courier: {} into result, and return the empty dict.
-Then you do [(origin, destination)] = count on that returned dictionary."""
 
-    counter = Counter((d["courier"], d["origin"], d["destination"]) for d in deliveries)
-    # Step 2: Organize into final structure
-    result = {}
-    for (courier, origin, destination), count in counter.items():
-        result.setdefault(courier, {})[(origin, destination)] = count
+    route_counts = defaultdict(int)
 
-    return result
+    for delivery in deliveries:
+
+        key = (delivery["courier"], delivery["origin"], delivery["destination"])
+
+        route_counts[key] += 1
+    #
+    for (courier, origin, destination), count in route_counts.items():
+        print(f'"{courier}" {origin} -> {destination}, count: {count}')
 
 
 
@@ -462,7 +461,7 @@ def main():
                 {"courier": "FedEx", "origin": "Rome", "destination": "Milan"},
                 {"courier": "FedEx", "origin": "Naples", "destination": "Turin"},
             ]
-            print(courier_delivery_routes(deliveries))
+            courier_delivery_routes(deliveries)
 
         case _:
                 print("Invalid choice.")
