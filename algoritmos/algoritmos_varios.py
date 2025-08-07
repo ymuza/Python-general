@@ -39,7 +39,6 @@ def binary_search(array, target):
     return -1
 
 
-
 def fizzbuzz(n):
     """function to print numbers from 1 to n,
     but for multiples of 3 print "Fizz" instead of the number,
@@ -56,9 +55,8 @@ def fizzbuzz(n):
             print(i)
 
 
-
 def fibonacci_series(n):
-    """writes fibonacci series up until n """
+    """writes fibonacci series up until n"""
     if n <= 0:
         print(f"the series is: {n}")
     else:
@@ -72,19 +70,17 @@ def fibonacci_series(n):
             print(next_number)
 
 
-
 def remove_element_by_position(position, char_list):
     """removes the element in certain position"""
     if position < 0 or position >= len(char_list):
         print("invalid position")
         return char_list
     else:
-        char_to_remove = ''.join(char_list[position:position + 1])
+        char_to_remove = "".join(char_list[position : position + 1])
         if char_to_remove in char_list:
             char_list.remove(char_to_remove)
         print(char_list)
     return char_list
-
 
 
 def duplicates_in_list(element_list):
@@ -100,8 +96,7 @@ def duplicates_in_list(element_list):
 
     print("list: ", element_list)
 
-    print("duplicates:", ','.join(map(str, duplicates)))
-
+    print("duplicates:", ",".join(map(str, duplicates)))
 
 
 def longest_unique_substring(string):
@@ -113,13 +108,11 @@ def longest_unique_substring(string):
     char_index_map = {}
 
 
-
 def two_sum(nums: list, t: int):
     """Given a list of integers and a target,
-       return the indices of the two numbers that add up to the target."""
+    return the indices of the two numbers that add up to the target."""
     seen = {}
 
-    nums = nums
     target = t
 
     for i, num in enumerate(nums):
@@ -128,7 +121,6 @@ def two_sum(nums: list, t: int):
             return [seen[diff], i]
         seen[num] = i
     return ""
-
 
 
 def is_prime(n):
@@ -141,7 +133,7 @@ def is_prime(n):
         return False
 
     # Check odd divisors up to sqrt(n)
-    for i in range(3, int(n ** 0.5) + 1, 2):
+    for i in range(3, int(n**0.5) + 1, 2):
         if n % i == 0:
             return False
     return True
@@ -163,7 +155,6 @@ def primes_to_the_front():
     return primes + non_primes
 
 
-
 def zeroes_to_the_end():
     """move 0 to the end of the list"""
 
@@ -173,7 +164,7 @@ def zeroes_to_the_end():
     for v in list1:
         if v != 0:
             list1[position] = v
-            position += 1 # the pointer only moves when v is not 0
+            position += 1  # the pointer only moves when v is not 0
 
     while position < len(list1):
         list1[position] = 0
@@ -181,9 +172,8 @@ def zeroes_to_the_end():
     print(list1)
 
 
-
 def are_anagrams(word1: str, word2: str):
-    """Check if two words are anagrams (case-insensitive). """
+    """Check if two words are anagrams (case-insensitive)."""
 
     word1 = word1.replace(" ", "").lower()
     word2 = word2.replace(" ", "").lower()
@@ -192,7 +182,6 @@ def are_anagrams(word1: str, word2: str):
         return False
 
     return sorted(word1) == sorted(word2)
-
 
 
 def count_vowels(random_string: str):
@@ -205,7 +194,6 @@ def count_vowels(random_string: str):
             vowel_counter += 1
 
     return vowel_counter
-
 
 
 def compress_string(input_string):
@@ -253,15 +241,13 @@ def move_specific_element_to_the_end(number):
     if number not in list1:
         print("the number is not on the list.")
 
-
-    for i in range (len(list1)):
+    for i in range(len(list1)):
         if list1[i] == number:
             temp = list1[-1]
             list1[-1] = list1[i]
             list1[i] = temp
 
     return list1
-
 
 
 def move_all_instances_of_an_element_to_the_end(number, numbers_list):
@@ -317,7 +303,6 @@ def minimum_occurrence(string1):
     return None
 
 
-
 def courier_delivery_routes(deliveries):
 
     route_counts = defaultdict(int)
@@ -330,7 +315,6 @@ def courier_delivery_routes(deliveries):
     #
     for (courier, origin, destination), count in route_counts.items():
         print(f'"{courier}" {origin} -> {destination}, count: {count}')
-
 
 
 def main():
@@ -379,7 +363,9 @@ def main():
             print(find_max(items))
 
         case 4:
-            arr = list(map(int, input("Enter sorted numbers separated by space: ").split()))
+            arr = list(
+                map(int, input("Enter sorted numbers separated by space: ").split())
+            )
             target = int(input("Enter the target number: "))
             print(binary_search(arr, target))
 
@@ -414,7 +400,7 @@ def main():
             is_prime(n)
 
         case 12:
-           print(primes_to_the_front())
+            print(primes_to_the_front())
 
         case 13:
             zeroes_to_the_end()
@@ -436,7 +422,9 @@ def main():
             move_specific_element_to_the_end(43)
 
         case 19:
-            print(move_all_instances_of_an_element_to_the_end(2,[2, 4, 10, 99, 2, 2, 13]))
+            print(
+                move_all_instances_of_an_element_to_the_end(2, [2, 4, 10, 99, 2, 2, 13])
+            )
 
         case 20:
             print(switch_elements(7, 10, [1, 12, 5, 4, 7, 20, 18, 10, 15]))
@@ -446,7 +434,6 @@ def main():
 
         case 22:
             print(minimum_occurrence("dsdsddsffgggghhhjkk"))
-
 
         case 23:
             deliveries = [
@@ -464,8 +451,7 @@ def main():
             courier_delivery_routes(deliveries)
 
         case _:
-                print("Invalid choice.")
+            print("Invalid choice.")
 
 
 main()
-

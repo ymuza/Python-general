@@ -5,30 +5,21 @@ the outside of the class, so we can restrict the access. This prevents data insi
 the class from being modified.
 """
 
+class BankAccount:
+    def __init__(self, balance):
+        self._balance = balance  # "protected" attribute (convention)
 
-class Computer:
+    def deposit(self, amount):
+        self._balance += amount
 
-    def __init__(self):
-        self.__maxprice = 900
+    def get_balance(self):
+        return self._balance
 
-    def sell(self):
-        print("Selling Price: {}".format(self.__maxprice))
+# Usage
+account = BankAccount(100)
+account.deposit(50)
+print(account.get_balance())  # 150
 
-    def set_max_price(self, price):
-        self.__maxprice = price
-
-
-c = Computer()  # c is the object created from the Computer class.
-c.sell()
-
-# change the price
-c.__maxprice = 1000  # this won't work, because of encapsulation.
-c.sell()
-
-# using setter function
-c.set_max_price(1000)  # in order to change the max price, the only way is to use a setter function
-c.sell()
-
-
-
+# Direct access is discouraged but possible
+print(account._balance)  # 150 (works but not recommended)
 
