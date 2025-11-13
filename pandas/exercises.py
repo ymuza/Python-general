@@ -69,6 +69,7 @@ def read_csv_file(file_name):
 
 
 def modify_dataframe(csv_file):
+    """modifies csv dataframe"""
     # Read the CSV file
     df = pd.read_csv(csv_file)
     #print("Original data:")
@@ -85,12 +86,13 @@ def modify_dataframe(csv_file):
 
 
 def save_to_csv_in_place(csv_file):
-
+    """modifies a csv in place"""
     df = modify_dataframe(csv_file)
     df.to_csv(csv_file, encoding='utf-8', index=False)
 
 
 def create_new_csv_from_old(csv_file):
+    """creates a new csv file from old version"""
     df = modify_dataframe(csv_file)
     df['under_age'] = np.where(df['age'] <= 21, "Yes", "No")
 
