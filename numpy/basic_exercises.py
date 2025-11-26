@@ -1,5 +1,4 @@
 import sys
-
 import numpy as np
 
 
@@ -89,11 +88,28 @@ def vectorized_operations():
 
     # Vectorized approach
     a_np = np.array([1, 2, 3, 4, 5])
-    b_np = np.array([6, 7, 8, 9, 10])
+    b_np = np.array([6, 7, 8, 9, 13])
     result_np = a_np + b_np  # [7, 9, 11, 13, 15]
     print("a_np: ", a_np)
     print("b_np: ", b_np)
     print("result of vectorized operation (a_np + b_np): ", result_np)
+    print("result of vectorized operation (a_np - b_np): ", a_np - b_np)
+
+
+def broadcasting():
+    a = np.array([1, 2, 3])
+    print("array a: ", a)
+    print("array a + a scalar value (10): ", a + 10)
+
+    m = np.array([[1, 2, 3], [4, 5, 6]])
+    v = np.array([10, 20, 30])
+    print("array m: ", m)
+    print("vector v: ", v)
+    print("m + v: ", m + v)
+    m + v
+
+
+
 
 def main():
 
@@ -105,7 +121,8 @@ def main():
     print("5 - Array aggregations")
     print("6 - Random numbers",end="          ")
     print("7 - detect_and_replace_missing_values", end="          ")
-    print("8 - vectorized_operations")
+    print("8 - vectorized_operations", end="          ")
+    print("9 - broadcasting")
     print("__________________________________________________________________"
           "__________________________________________________________________________________________")
 
@@ -129,24 +146,24 @@ def main():
 
         case 3:
             arrays_shape_and_size()
-        #
+
         case 4:
             array_flatting()
 
         case 5:
             array_aggregations()
 
-        #
         case 6:
             random_numbers()
-        #
+
         case 7:
             detect_and_replace_missing_values()
 
         case 8:
             vectorized_operations()
-        #     pos = int(input("Enter position to remove: "))
-        #     print(remove_element_by_position(pos, items))
+
+        case 9:
+            broadcasting()
 
 
 
