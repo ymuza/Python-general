@@ -1,4 +1,4 @@
-from collections import Counter, defaultdict
+from collections import defaultdict
 
 
 def is_palindrome(s):
@@ -76,7 +76,7 @@ def remove_element_by_position(position, char_list):
         print("invalid position")
         return char_list
     else:
-        char_to_remove = "".join(char_list[position : position + 1])
+        char_to_remove = "".join(char_list[position: position + 1])
         if char_to_remove in char_list:
             char_list.remove(char_to_remove)
         print(char_list)
@@ -94,18 +94,28 @@ def duplicates_in_list(element_list):
         else:
             duplicates.append(i)
 
-    print("list: ", element_list)
-
-    print("duplicates:", ",".join(map(str, duplicates)))
+    return {"duplicates": duplicates}
 
 
-def longest_unique_substring(string):
-    """"""
-    if not string:
-        return 0
-    max_length = 0
+def longest_unique_substring(string: str) -> str:
+    """find the longest substring without repeating characters"""
     start = 0
-    char_index_map = {}
+    max_len = 0
+    max_substring = ""
+    seen = {}
+
+    for i, char in enumerate(string):
+        if char in seen and seen[char] >= start:
+            # Move start to one after the last occurrence of char
+            start = seen[char] + 1
+        seen[char] = i  # Update last seen index of char
+
+        # Check if current window is the largest so far
+        if i - start + 1 > max_len:
+            max_len = i - start + 1
+            max_substring = string[start:i + 1]
+
+    return max_substring
 
 
 def two_sum(nums: list, t: int):
@@ -131,9 +141,8 @@ def is_prime(n):
         return True
     if n % 2 == 0:
         return False
-
     # Check odd divisors up to sqrt(n)
-    for i in range(3, int(n**0.5) + 1, 2):
+    for i in range(3, int(n ** 0.5) + 1, 2):
         if n % i == 0:
             return False
     return True
@@ -156,7 +165,7 @@ def primes_to_the_front():
 
 
 def zeroes_to_the_end():
-    """move 0 to the end of the list"""
+    """move 0s to the end of the list"""
 
     list1 = [10, 0, 20, 0, 40, 60]
 
@@ -238,14 +247,16 @@ def sum_all_elements_of_a_list(list1):
 def move_specific_element_to_the_end(number):
     """Move Specific Element to the End. If element is 3, Output should be: [1, 2, 4, 3, 3, 3]"""
     list1 = [5, 3, 43, 2, 4, 19]
+
     if number not in list1:
         print("the number is not on the list.")
+        return list1
 
-    for i in range(len(list1)):
-        if list1[i] == number:
-            temp = list1[-1]
-            list1[-1] = list1[i]
-            list1[i] = temp
+    # Count how many times the number appears
+    count = list1.count(number)
+
+    # Remove all occurrences and add them at the end
+    list1 = [x for x in list1 if x != number] + [number] * count
 
     return list1
 
@@ -288,7 +299,6 @@ def minimum_occurrence(string1):
         return ""
 
     char_counts = {}
-
     for char in string1:
         if char not in char_counts:
             char_counts[char] = 1
@@ -296,23 +306,30 @@ def minimum_occurrence(string1):
             char_counts[char] += 1
 
     min_occurrence = min(char_counts.values())
-
     for char in string1:
         if char_counts[char] == min_occurrence:
             return char
     return None
 
 
-def courier_delivery_routes(deliveries):
+def find_missing(nums):
+    """Given a list of numbers from 1 to N with one number missing,
+     find the missing number."""
+    n = len(nums) + 1
+    total = n * (n + 1) // 2
+    print(n * (n + 1))
+    return total - sum(nums)
 
+
+def courier_delivery_routes(deliveries):
+    """form courier delivery routes"""
     route_counts = defaultdict(int)
 
     for delivery in deliveries:
-
         key = (delivery["courier"], delivery["origin"], delivery["destination"])
 
         route_counts[key] += 1
-    #
+
     for (courier, origin, destination), count in route_counts.items():
         print(f'"{courier}" {origin} -> {destination}, count: {count}')
 
@@ -341,6 +358,8 @@ def main():
     print("21 - Flatten a list")
     print("22 - Minimum occurrence ")
     print("23 - Courier delivery routes ")
+    print("24 - Find missing number")
+
     print("_______________________________________________")
 
     try:
@@ -383,7 +402,7 @@ def main():
             print(remove_element_by_position(pos, items))
 
         case 8:
-            items = input("Enter elements separated by space: ").split()
+            items = [2, 340, 10, 11, 89343, "sdsdsd", 340, 2, 55, 60]
             print(duplicates_in_list(items))
 
         case 9:
@@ -449,6 +468,9 @@ def main():
                 {"courier": "FedEx", "origin": "Naples", "destination": "Turin"},
             ]
             courier_delivery_routes(deliveries)
+
+        case 24:
+            find_missing([2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 13, 14, 15])
 
         case _:
             print("Invalid choice.")
