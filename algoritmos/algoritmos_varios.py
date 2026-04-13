@@ -438,7 +438,7 @@ def main():
             print(sum_all_elements_of_a_list([1, 45, 4, 7, 2, 5]))
 
         case 18:
-            move_specific_element_to_the_end(43)
+            print(move_specific_element_to_the_end(43))
 
         case 19:
             print(

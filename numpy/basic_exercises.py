@@ -1,5 +1,6 @@
 import sys
 import numpy as np
+from pandas.io.pytables import Table
 
 
 def create_array():
@@ -109,6 +110,32 @@ def broadcasting():
     m + v
 
 
+def indexing_and_slicing():
+    """demonstrates indexing and slicing"""
+    a = np.array([10, 20, 30, 40, 50])
+    print("array a: ", a)
+    print("element at index 0: ", a[0])
+    print("elements from index 1 to 3: ", a[1:4])
+    print("last element: ", a[-1])
+
+    m = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+    print("\nmatrix m:\n", m)
+    print("element at row 1, col 2: ", m[1, 2])
+    print("second row: ", m[1, :])
+    print("second column: ", m[:, 1])
+
+
+def matrix_operations():
+    """demonstrates transpose and matrix multiplication (dot product)"""
+    a = np.array([[1, 2], [3, 4]])
+    b = np.array([[5, 6], [7, 8]])
+    print("matrix a:\n", a)
+    print("matrix b:\n", b)
+
+    print("\ntranspose of a:\n", a.T)
+    print("matrix multiplication (dot product) of a and b:\n", np.dot(a, b))
+    # Or using the @ operator
+    print("a @ b:\n", a @ b)
 
 
 def main():
@@ -122,7 +149,9 @@ def main():
     print("6 - Random numbers",end="          ")
     print("7 - detect_and_replace_missing_values", end="          ")
     print("8 - vectorized_operations", end="          ")
-    print("9 - broadcasting")
+    print("9 - broadcasting", end="          ")
+    print("10 - Indexing and slicing", end="          ")
+    print("11 - Matrix operations (dot product, transpose)")
     print("__________________________________________________________________"
           "__________________________________________________________________________________________")
 
@@ -164,6 +193,12 @@ def main():
 
         case 9:
             broadcasting()
+
+        case 10:
+            indexing_and_slicing()
+
+        case 11:
+            matrix_operations()
 
 
 
