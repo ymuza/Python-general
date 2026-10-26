@@ -1,3 +1,5 @@
+"""Minimal asyncio example: a coroutine that awaits a non-blocking sleep."""
+
 import asyncio
 
 

@@ -1,8 +1,23 @@
-from jinja2 import Environment, FileSystemLoader
-from weasyprint import HTML
+"""Renders a Jinja2 HTML template and converts it to PDF with WeasyPrint."""
 
-# Load the Jinja2 template environment
-env = Environment(loader=FileSystemLoader('.'))
+from pathlib import Path
+
+# jinja2 and weasyprint are optional deps: install with `poetry install --with reports`
+try:
+    from jinja2 import Environment, FileSystemLoader, select_autoescape
+    from weasyprint import HTML
+except ImportError as exc:
+    raise SystemExit(
+        f"Missing optional dependency ({exc.name}). Run: poetry install --with reports"
+    ) from exc
+
+BASE_DIR = Path(__file__).parent
+
+# Load the Jinja2 template environment (templates live next to this script)
+env = Environment(
+    loader=FileSystemLoader(BASE_DIR),
+    autoescape=select_autoescape(["html"]),
+)
 
 # Define the context variables
 context = {
@@ -16,5 +31,4 @@ template = env.get_template('template1.html')
 html_out = template.render(**context)
 
 # Convert the HTML to PDF with WeasyPrint
-HTML(string=html_out).write_pdf('output.pdf')
-
+HTML(string=html_out).write_pdf(BASE_DIR / 'output.pdf')

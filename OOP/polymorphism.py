@@ -1,3 +1,6 @@
+"""Polymorphism: different classes expose the same methods, so one function
+can work with any of them."""
+
 class Parrot:
 
     def fly(self):
@@ -18,6 +21,7 @@ class Penguin:
 
 # common interface
 def flying_test(bird):
+    """Calls fly() on any object that implements it (duck typing)."""
     bird.fly()
 
 

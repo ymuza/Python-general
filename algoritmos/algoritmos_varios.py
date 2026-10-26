@@ -1,3 +1,5 @@
+"""Collection of classic algorithm exercises, selectable from an interactive menu."""
+
 from collections import defaultdict
 
 
@@ -10,8 +12,7 @@ def factorial(n):
     """Write a function to calculate the factorial of a number"""
     if n == 0:
         return 1
-    else:
-        return n * factorial(n - 1)
+    return n * factorial(n - 1)
 
 
 def find_max(lst):
@@ -20,8 +21,7 @@ def find_max(lst):
         return None
     max_elem = lst[0]
     for elem in lst:
-        if elem > max_elem:
-            max_elem = elem
+        max_elem = max(max_elem, elem)
     return max_elem
 
 
@@ -32,7 +32,7 @@ def binary_search(array, target):
         mid = (low + high) // 2
         if array[mid] == target:
             return mid
-        elif array[mid] < target:
+        if array[mid] < target:
             low = mid + 1
         else:
             high = mid - 1
@@ -56,18 +56,16 @@ def fizzbuzz(n):
 
 
 def fibonacci_series(n):
-    """writes fibonacci series up until n"""
+    """prints the first n terms of the fibonacci series (0, 1, 1, 2, ...)"""
     if n <= 0:
-        print(f"the series is: {n}")
-    else:
-        first = 0
-        second = 1
+        print("n must be a positive number")
+        return
+    first = 0
+    second = 1
 
-        for i in range(0, n):
-            next_number = first + second
-            first = second
-            second = next_number
-            print(next_number)
+    for _ in range(n):
+        print(first)
+        first, second = second, first + second
 
 
 def remove_element_by_position(position, char_list):
@@ -75,24 +73,22 @@ def remove_element_by_position(position, char_list):
     if position < 0 or position >= len(char_list):
         print("invalid position")
         return char_list
-    else:
-        char_to_remove = "".join(char_list[position: position + 1])
-        if char_to_remove in char_list:
-            char_list.remove(char_to_remove)
-        print(char_list)
+    del char_list[position]
+    print(char_list)
     return char_list
 
 
 def duplicates_in_list(element_list):
-    """add the duplicates on a new list"""
-    seen = []
+    """add the duplicates on a new list (each duplicated value reported once)"""
+    seen = set()
     duplicates = []
 
     for i in element_list:
-        if i not in seen:
-            seen.append(i)
+        if i in seen:
+            if i not in duplicates:
+                duplicates.append(i)
         else:
-            duplicates.append(i)
+            seen.add(i)
 
     return {"duplicates": duplicates}
 
@@ -130,7 +126,7 @@ def two_sum(nums: list, t: int):
         if diff in seen:
             return [seen[diff], i]
         seen[num] = i
-    return ""
+    return None
 
 
 def is_prime(n):
@@ -207,7 +203,8 @@ def count_vowels(random_string: str):
 
 def compress_string(input_string):
     """
-    Compresses a string by replacing repeated characters with counts. Example: "aaabbbcc" -> "a3b3c2"
+    Compresses a string by replacing repeated characters with counts.
+    Example: "aaabbbcc" -> "a3b3c2"
     """
     if not input_string:  # Handle empty string case
         return ""
@@ -236,6 +233,7 @@ def compress_string(input_string):
 
 
 def sum_all_elements_of_a_list(list1):
+    """returns the sum of all the numbers in the list"""
     counter = 0
 
     for num in list1:
@@ -277,7 +275,7 @@ def switch_elements(number1: int, number2: int, lst: list):
         lst[pos1], lst[pos2] = lst[pos2], lst[pos1]  # Pythonic swap
         return lst
     except ValueError:
-        print(f"One or both elements not found in list")
+        print("One or both elements not found in list")
         return lst
 
 
@@ -317,7 +315,6 @@ def find_missing(nums):
      find the missing number."""
     n = len(nums) + 1
     total = n * (n + 1) // 2
-    print(n * (n + 1))
     return total - sum(nums)
 
 
@@ -335,6 +332,7 @@ def courier_delivery_routes(deliveries):
 
 
 def main():
+    """Shows the menu, reads a choice and runs the selected algorithm."""
     print("1 - Check if palindrome")
     print("2 - Calculate factorial")
     print("3 - Find max")
@@ -390,11 +388,11 @@ def main():
 
         case 5:
             n = int(input("Enter a number: "))
-            print(fizzbuzz(n))
+            fizzbuzz(n)
 
         case 6:
             n = int(input("Enter number of terms: "))
-            print(fibonacci_series(n))
+            fibonacci_series(n)
 
         case 7:
             items = input("Enter characters separated by space: ").split()
@@ -416,7 +414,7 @@ def main():
 
         case 11:
             n = 2
-            is_prime(n)
+            print(is_prime(n))
 
         case 12:
             print(primes_to_the_front())
@@ -476,4 +474,5 @@ def main():
             print("Invalid choice.")
 
 
-main()
+if __name__ == "__main__":
+    main()

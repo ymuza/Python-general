@@ -5,11 +5,14 @@ specifying their concrete classes"""
 import copy
 
 class Prototype:
+    """Mixin that lets any subclass copy itself."""
     def clone(self):
+        """Return a shallow copy of this object."""
         return copy.copy(self)
 
 
 class Guitar(Prototype):
+    """Concrete prototype that can be cloned instead of built from scratch."""
     def __init__(self, model, color):
         self.model = model
         self.color = color

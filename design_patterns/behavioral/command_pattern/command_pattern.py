@@ -4,6 +4,7 @@ thereby letting you parameterize clients with different requests,
 
 
 class Television:
+    """the receiver: the object that actually performs the actions"""
     def __init__(self):
         self.channel = 1
         self.volume = 50
@@ -18,11 +19,13 @@ class Television:
 
 
 class Command:
+    """command interface, every concrete command implements execute"""
     def execute(self) -> None:
         pass
 
 
 class ChangeChannelCommand(Command):
+    """command that tells the television to change the channel"""
     def __init__(self, tv: Television, channel: int):
         self.television = tv
         self.channel = channel
@@ -32,6 +35,7 @@ class ChangeChannelCommand(Command):
 
 
 class AdjustVolumeCommand(Command):
+    """command that tells the television to set the volume"""
     def __init__(self, tv: Television, volume: int):
         self.television = tv
         self.volume = volume
@@ -41,14 +45,17 @@ class AdjustVolumeCommand(Command):
 
 
 class RemoteControl:
+    """the invoker: maps buttons to commands without knowing what they do"""
     def __init__(self, tv: Television):
         self.television = tv
         self.commands = {}
 
     def set_command(self, button: str, command: Command) -> None:
+        """assigns a command to a button"""
         self.commands[button] = command
 
     def press_button(self, button: str) -> None:
+        """runs the command bound to the button, if there is one"""
         command = self.commands.get(button)
         if command:
             command.execute()

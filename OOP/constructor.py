@@ -1,4 +1,7 @@
+"""Shows the __init__ constructor and the difference between class and instance variables."""
+
 class Person:
+    """A person with a name and age; species is shared by every instance."""
 
     species = "human"  # class variable shared by all instances
 
@@ -7,6 +10,7 @@ class Person:
         self.age = age
 
     def is_adult(self):
+        """Prints whether the person is older than 20."""
         if self.age > 20:
             print(f"{self.name} is an adult")
         else:

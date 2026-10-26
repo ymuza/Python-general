@@ -1,8 +1,10 @@
-start = 25
-end = 50
-print("Prime numbers between", start, "and", end, "are:")
+"""Prints the prime numbers in a range using a for/else loop."""
 
-for num in range(start, end + 1):
+START = 25
+END = 50
+print("Prime numbers between", START, "and", END, "are:")
+
+for num in range(START, END + 1):
     # all prime numbers are greater than 1
     # if number is less than or equal to 1, it is not prime
     if num > 1:

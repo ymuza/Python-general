@@ -1,3 +1,7 @@
+"""Basic pandas DataFrame exercises, selectable from an interactive menu."""
+
+from pathlib import Path
+
 import pandas as pd
 import numpy as np
 
@@ -27,8 +31,8 @@ def add_net_salary_column():
 def add_salary_category_column():
     """ Creates a column using a custom function and 'apply' keyword """
     df = pd.DataFrame(dict1)
-    df['salary_category'] = (df['salary']
-                             .apply(lambda x : 'low' if x < 50000 else 'medium' if x <65000 else 'high'))
+    df['salary_category'] = df['salary'].apply(
+        lambda x: 'low' if x < 50000 else 'medium' if x < 65000 else 'high')
     return df
 
 
@@ -76,8 +80,7 @@ def modify_dataframe(csv_file):
     # print(df.head())
 
     # Add new columns
-    df['under_age'] = np.where(df['age'] <= 21, "YES", "NO")
-
+    df['under_age'] = np.where(df['age'] <= 21, "Yes", "No")
 
     # Sort the data
     df = df.sort_values('age', ascending=True)
@@ -93,16 +96,15 @@ def save_to_csv_in_place(csv_file):
 
 def create_new_csv_from_old(csv_file):
     """creates a new csv file from old version"""
-    df = modify_dataframe(csv_file)
-    df['under_age'] = np.where(df['age'] <= 21, "Yes", "No")
-
-    df.to_csv('random_people_modified', encoding='utf-8', index=False)
-
+    df = modify_dataframe(csv_file)  # 'under_age' is already computed there
+    df.to_csv('random_people_modified.csv', encoding='utf-8', index=False)
 
 
 def main():
+    """Shows the menu, reads a choice and runs the selected exercise."""
 
-    csv = "../test_CSVs/random_people.csv"
+    # path relative to the repo root, independent of the cwd
+    csv = Path(__file__).resolve().parent.parent / "test_CSVs" / "random_people.csv"
     print("\n")
     print("1 - Add net salary column with values",end="    ")
     print("2 - Add salary category column with values", end="    ")
@@ -153,4 +155,6 @@ def main():
         case _:
             print("Invalid choice.")
 
-main()
+
+if __name__ == "__main__":
+    main()

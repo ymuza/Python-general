@@ -1,5 +1,11 @@
+"""Checks whether a string contains a palindromic substring."""
 
-def is_palindrome(s):
+def contains_palindrome(s):
+    """Returns True if any substring of s (case-insensitive) is a palindrome.
+
+    Note: single characters count as palindromes, so any non-empty string
+    returns True.
+    """
     s = s.lower()  # Convert to lowercase for case-insensitive comparison
     for i in range(len(s)):
         for j in range(i + 1, len(s) + 1):
@@ -10,7 +16,6 @@ def is_palindrome(s):
 
 
 # Example usage
-input_string = "racecar and aca are a palindrome"
-result = is_palindrome(input_string)
-print(f"Is there a palindrome in the input string? {result}")
-#print(f"if so, how many? {}")
+INPUT_STRING = "racecar and aca are a palindrome"
+RESULT = contains_palindrome(INPUT_STRING)
+print(f"Is there a palindrome in the input string? {RESULT}")

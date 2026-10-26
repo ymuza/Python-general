@@ -1,70 +1,65 @@
-from abc import abstractmethod, ABCMeta
+"""State pattern: an object changes its behavior when its internal state changes.
+RadioStation (the context) holds a state object and delegates change_state() to it.
+Each state performs its action and then sets the next state on the radio, so calling
+radio.change_state() repeatedly cycles OFF -> ON -> LOUDER -> QUIETER -> OFF..."""
+
+from abc import ABC, abstractmethod
 
 
-class InternalState(metaclass = ABCMeta):
-	@abstractmethod
-	def change_state(self):
-		pass
-
-
-class TurnedOn(InternalState):
-	def change_state(self):
-		print("Turning ON the device!!!")
-		return "ON"
+class InternalState(ABC):
+    """Interface for the states the radio can be in."""
+    @abstractmethod
+    def change_state(self, radio: "RadioStation") -> None:
+        """Perform this state's action and move the radio to the next state."""
 
 
 class TurnedOff(InternalState):
-	def change_state(self):
-		print("Turning OFF the device!!!")
-		return "OFF"
+    """State in which the radio is off."""
+    def change_state(self, radio):
+        print("Turning ON the device!!!")
+        radio.set_state(TurnedOn())
 
 
-class IncreaseVolume(InternalState):
-	def change_state(self):
-		print("Increasing volume by 10 !!!")
-		return "+10"
+class TurnedOn(InternalState):
+    """State in which the radio is on."""
+    def change_state(self, radio):
+        print("Increasing volume by 10 !!!")
+        radio.set_state(IncreasedVolume())
 
 
-class DecreaseVolume(InternalState):
-	def change_state(self):
-		print("Decreasing volume by 10 !!!")
-		return "-10"
+class IncreasedVolume(InternalState):
+    """State in which the volume was raised."""
+    def change_state(self, radio):
+        print("Decreasing volume by 10 !!!")
+        radio.set_state(DecreasedVolume())
 
 
-class RadioStation(InternalState):
-	def __init__(self):
-		self.state = None
-
-	def get_state(self):
-		return self.state
-
-	def set_state(self, status):
-		self.state = status
-
-	def change_state(self):
-		self.state = self.state.change_state()
+class DecreasedVolume(InternalState):
+    """State in which the volume was lowered."""
+    def change_state(self, radio):
+        print("Turning OFF the device!!!")
+        radio.set_state(TurnedOff())
 
 
-Radio = RadioStation()
-print('The radios internal state is currently: {}'.format(Radio.get_state()))
+class RadioStation:
+    """Context: holds the current state and delegates change_state() to it."""
+    def __init__(self):
+        self.state: InternalState = TurnedOff()
 
-ON = TurnedOn()
-OFF = TurnedOff()
+    def get_state(self) -> str:
+        return type(self.state).__name__
 
-Louder = IncreaseVolume()
-Lower = DecreaseVolume()
+    def set_state(self, state: InternalState) -> None:
+        self.state = state
 
-print("Turning on the radio!")
-Radio.set_state(ON)
-Radio.change_state()
-print('The radios internal state is currently: {}'.format(Radio.get_state()))
+    def change_state(self) -> None:
+        self.state.change_state(self)
 
-print("Turning off the radio!")
-Radio.set_state(OFF)
-Radio.change_state()
-print('The radios internal state is currently: {}'.format(Radio.get_state()))
 
-print("Increasing the volume!")
-Radio.set_state(Louder)
-Radio.change_state()
-print('The radios internal state is currently: {}'.format(Radio.get_state()))
+if __name__ == "__main__":
+    radio = RadioStation()
+    print(f"The radio's internal state is currently: {radio.get_state()}")
+
+    for _ in range(5):
+        radio.change_state()
+        print(f"The radio's internal state is currently: {radio.get_state()}")

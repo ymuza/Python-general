@@ -8,32 +8,55 @@ from abc import ABC, abstractmethod
 
 
 class FileDownloader(ABC):
+    """Interface shared by the real downloader and its proxy."""
     @abstractmethod
     def download(self, url: str) -> bytes:
-        pass
+        """Download the file at url and return its bytes."""
 
 
 class RemoteFileDownloader(FileDownloader):
+    """Real subject: the object that actually downloads the file."""
     def download(self, url: str) -> bytes:
-        # Code to download file from remote server
-        pass
+        print(f"  [remote] downloading {url} ...")
+        # simulated download
+        return b"file content of " + url.encode()
 
 
 class MEGAUPLOAD(FileDownloader):  # THIS IS THE FILE DOWNLOADER PROXY
-    def __init__(self, file_downloader: FileDownloader):
+    """Proxy: checks access and caches results before reaching the real downloader."""
+    def __init__(self, file_downloader: FileDownloader, allowed: bool = True):
         self.file_downloader = file_downloader
+        self.allowed = allowed
+        self._cache: dict[str, bytes] = {}
 
     def download(self, url: str) -> bytes:
-        # Code to authenticate user
-        # ...
+        if not self.allowed:
+            raise PermissionError("user is not allowed to download files")
+
+        # return the cached copy if we already downloaded this url
+        if url in self._cache:
+            print(f"  [proxy] cache hit for {url}")
+            return self._cache[url]
 
         # Call the real downloader to download the file
-        return self.file_downloader.download(url)
+        content = self.file_downloader.download(url)
+        self._cache[url] = content
+        return content
 
 
 if __name__ == '__main__':
     real_downloader = RemoteFileDownloader()
     downloader_proxy = MEGAUPLOAD(real_downloader)
 
-    file_url = 'https://wikileaks/who_killed_kennedy.zip'
-    downloaded_file = downloader_proxy.download(file_url)
+    downloaded_file = downloader_proxy.download('https://example.com/file.zip')
+    print(downloaded_file)
+
+    # second call is served from the proxy cache
+    downloaded_file = downloader_proxy.download('https://example.com/file.zip')
+    print(downloaded_file)
+
+    blocked_proxy = MEGAUPLOAD(real_downloader, allowed=False)
+    try:
+        blocked_proxy.download('https://example.com/file.zip')
+    except PermissionError as error:
+        print(error)

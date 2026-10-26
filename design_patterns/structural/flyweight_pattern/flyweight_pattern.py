@@ -5,22 +5,26 @@ avoid creating new objects for each instance of the data. """
 
 
 class Player:
+    """Flyweight: shared player data, created only once per name."""
     def __init__(self, name, height):
         self.name = name
         self.height = height
 
 
 class PlayerFactory:
+    """Creates players and caches them by name so they can be reused."""
     def __init__(self):
         self._players = {}
 
     def get_player(self, name, height):
+        """Return the cached Player for name, creating it on first use."""
         if name not in self._players:
             self._players[name] = Player(name, height)
         return self._players[name]
 
 
 class Team:
+    """Holds references to shared Player objects instead of its own copies."""
     def __init__(self, name, players):
         self.name = name
         self.players = players

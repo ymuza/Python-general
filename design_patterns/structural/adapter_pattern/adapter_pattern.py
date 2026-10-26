@@ -2,22 +2,30 @@
 It's usefull when you want to use an existing class that doesn't quite fit with the 
 rest of your code, but you don't want to modify its source code."""
 
+from abc import ABC, abstractmethod
 
-class ArgentinianSocketInterface:
+
+class ArgentinianSocketInterface(ABC):
+    """Target interface: the socket API the client code expects."""
+    @abstractmethod
     def voltage(self):
-        pass
+        """Return the socket voltage."""
 
+    @abstractmethod
     def live(self):
-        pass
+        """Return the live pin value."""
 
+    @abstractmethod
     def neutral(self):
-        pass
+        """Return the neutral pin value."""
 
+    @abstractmethod
     def earth(self):
-        pass
+        """Return the earth pin value."""
 
 
 class USASocket:
+    """Adaptee: an existing socket whose interface doesn't match the target."""
 
     @staticmethod
     def voltage():
@@ -33,6 +41,7 @@ class USASocket:
 
 
 class Adapter(ArgentinianSocketInterface):
+    """Wraps a USASocket so it can be used through ArgentinianSocketInterface."""
 
     def __init__(self, socket_type):
         self.socket = socket_type

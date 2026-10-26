@@ -1,11 +1,12 @@
 """
-encapsulation is the building of data, along with the methods that operate that data
+encapsulation is the bundling of data, along with the methods that operate that data
 into a single unit (generally a class). No one can access the data inside the class, from
 the outside of the class, so we can restrict the access. This prevents data inside
 the class from being modified.
 """
 
 class BankAccount:
+    """Account whose balance is kept in a protected attribute."""
     def __init__(self, balance):
         self._balance = balance  # "protected" attribute (convention)
 
@@ -21,5 +22,4 @@ account.deposit(50)
 print(account.get_balance())  # 150
 
 # Direct access is discouraged but possible
-print(account._balance)  # 150 (works but not recommended)
-
+print(account._balance)  # pylint: disable=protected-access  # 150 (works but not recommended)

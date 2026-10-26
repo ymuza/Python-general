@@ -1,6 +1,7 @@
+"""Basic NumPy exercises, selectable from an interactive menu."""
+
 import sys
 import numpy as np
-from pandas.io.pytables import Table
 
 
 def create_array():
@@ -12,7 +13,7 @@ def create_array():
     print("one dimensional array: ", b)
 
     c = np.array([[1,2,3], [4, 5, 6], [7,8,9]])
-    print("three dimensional array: ", a)
+    print("3x3 two-dimensional array: ", c)
 
 
 def create_arrays_with_zeros_and_ones():
@@ -46,14 +47,14 @@ def array_flatting():
 
 
 def array_aggregations():
-    """ """
+    """shows aggregation functions over an array"""
     m = np.array([[1, 2, 3], [4, 5, 6]])
     print("array m: ", m, end="\n\n")
     print("sum of all elements of m: ", m.sum())  # 21
     print("mean of m: ", m.mean())  # 3.5
     print("m's standard deviation: ", m.std())  # 1.707...
     print("m's var: ", m.var())  # 2.916...
-    print("m's min: ", m.min(), m.max())  # (1, 6)
+    print("m's min and max: ", m.min(), m.max())  # (1, 6)
 
     print("sum of m's axis 0: ", m.sum(axis=0))  # [5 7 9] (columns)
     print("sum of m's axis 1: ", m.sum(axis=1))  # [6 15] (rows)
@@ -61,20 +62,20 @@ def array_aggregations():
 
 def random_numbers():
     """generate random numbers"""
-    print("random numbers in a given shape: ", np.random.rand(3))  # e.g. [0.3, 0.7, 0.1]
-    print("random numbers from 'standard normal' distribution: ", np.random.randn(3))  # e.g. [-1.1, 0.4, 0.8]
-    print("random integers from low (inclusive) to high (exclusive): ", np.random.randint(0, 10, 5))
+    rng = np.random.default_rng()  # modern Generator API (preferred over np.random.rand/randn/randint)
+    print("random numbers in a given shape: ", rng.random(3))  # e.g. [0.3, 0.7, 0.1]
+    # e.g. [-1.1, 0.4, 0.8]
+    print("random numbers from 'standard normal' distribution: ", rng.standard_normal(3))
+    print("random integers from low (inclusive) to high (exclusive): ", rng.integers(0, 10, 5))
 
 
 def detect_and_replace_missing_values():
-    """"""
+    """detects and replaces missing (NaN) values"""
     a = np.array([1, np.nan, 3])
-    np.isnan(a)
-    # [False True False]
-    np.nanmean(a)
-    # 2.0
-    np.nan_to_num(a, nan=0)
-    # [1. 0. 3.]
+    print("array a: ", a)
+    print("missing values mask (np.isnan): ", np.isnan(a))  # [False True False]
+    print("mean ignoring NaN (np.nanmean): ", np.nanmean(a))  # 2.0
+    print("NaN replaced with 0 (np.nan_to_num): ", np.nan_to_num(a, nan=0))  # [1. 0. 3.]
 
 
 def vectorized_operations():
@@ -84,12 +85,13 @@ def vectorized_operations():
     a = [1, 2, 3, 4, 5]
     b = [6, 7, 8, 9, 10]
     result = []
-    for i in range(len(a)):
-        result.append(a[i] + b[i])
+    for x, y in zip(a, b):
+        result.append(x + y)
+    print("result of loop approach (a + b): ", result)  # [7, 9, 11, 13, 15]
 
     # Vectorized approach
     a_np = np.array([1, 2, 3, 4, 5])
-    b_np = np.array([6, 7, 8, 9, 13])
+    b_np = np.array([6, 7, 8, 9, 10])
     result_np = a_np + b_np  # [7, 9, 11, 13, 15]
     print("a_np: ", a_np)
     print("b_np: ", b_np)
@@ -98,6 +100,7 @@ def vectorized_operations():
 
 
 def broadcasting():
+    """Shows how NumPy broadcasts scalars and vectors across arrays."""
     a = np.array([1, 2, 3])
     print("array a: ", a)
     print("array a + a scalar value (10): ", a + 10)
@@ -107,7 +110,6 @@ def broadcasting():
     print("array m: ", m)
     print("vector v: ", v)
     print("m + v: ", m + v)
-    m + v
 
 
 def indexing_and_slicing():
@@ -139,6 +141,7 @@ def matrix_operations():
 
 
 def main():
+    """Shows the menu, reads a choice and runs the selected exercise."""
 
     print("\n")
     print("1 - Create simple arrays",end="    ")
@@ -152,8 +155,7 @@ def main():
     print("9 - broadcasting", end="          ")
     print("10 - Indexing and slicing", end="          ")
     print("11 - Matrix operations (dot product, transpose)")
-    print("__________________________________________________________________"
-          "__________________________________________________________________________________________")
+    print("_" * 156)
 
     try:
         choice = int(input("Choose an algorithm (type zero to exit): "))
@@ -201,5 +203,5 @@ def main():
             matrix_operations()
 
 
-
-main()
+if __name__ == "__main__":
+    main()

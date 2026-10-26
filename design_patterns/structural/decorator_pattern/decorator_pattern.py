@@ -4,16 +4,19 @@
 
 
 class Component:
+    """Interface shared by the real component and its decorators."""
     def operation(self):
         pass
 
 
 class ConcreteComponent(Component):
+    """The base object that decorators wrap."""
     def operation(self):
         return "ConcreteComponent"
 
 
 class Decorator(Component):
+    """Base decorator: wraps a component and delegates operation() to it."""
     def __init__(self, component):
         self._component = component
 
@@ -22,18 +25,20 @@ class Decorator(Component):
 
 
 class ConcreteDecoratorA(Decorator):
+    """Decorator that wraps the inner result in 'ConcreteDecoratorA(...)'."""
     def operation(self):
         return f"ConcreteDecoratorA({self._component.operation()})"
 
 
 class ConcreteDecoratorB(Decorator):
+    """Decorator that wraps the inner result in 'ConcreteDecoratorB(...)'."""
     def operation(self):
         return f"ConcreteDecoratorB({self._component.operation()})"
 
 
 if __name__ == '__main__':
-    component = ConcreteComponent()
-    decorator1 = ConcreteDecoratorA(component)
+    base_component = ConcreteComponent()
+    decorator1 = ConcreteDecoratorA(base_component)
     decorator2 = ConcreteDecoratorB(decorator1)
 
     print(decorator2.operation())  # "ConcreteDecoratorB(ConcreteDecoratorA(ConcreteComponent))"

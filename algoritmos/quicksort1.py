@@ -1,9 +1,15 @@
+"""Recursive quicksort implementation."""
+
 def quick_sort(sequence):
+    """Sorts a list using the last element as pivot.
+
+    Works on a copy, so the caller's list is not modified.
+    """
+    sequence = list(sequence)
     length = len(sequence)
     if length <= 1:
         return sequence
-    else:
-        pivot = sequence.pop()  # removes the last element and return it
+    pivot = sequence.pop()  # removes the last element and return it
 
     items_greater = []  # list to store the greater than the pivot items
 
@@ -15,11 +21,9 @@ def quick_sort(sequence):
         else:
             items_lower.append(item)
 
-    items_sum = items_lower + items_greater
-
     return quick_sort(items_lower) + [pivot] + quick_sort(items_greater)
-    # la linea de arriba va a llamar al algoritmo, poniendo de izquierda a derecha los menores al pivot y
-    # de derecha a izquierda a los mayores al pivot
+    # la linea de arriba va a llamar al algoritmo, poniendo de izquierda a derecha
+    # los menores al pivot y de derecha a izquierda a los mayores al pivot
 
 
 print(quick_sort([4456, 6, 213, 43, 67, 3]))

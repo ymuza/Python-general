@@ -1,3 +1,6 @@
+"""Ejemplo de composición: una clase se arma combinando objetos de otras clases
+en lugar de heredar de ellas."""
+
 class RoboDog:
     def __init__(self):
         pass
@@ -34,8 +37,10 @@ class CleanRobot:
         print("I clean ")
 
 
-# la clase Superbot está compuesta de objetos de las otras clases, y puede tener tambien metodos propios
+# la clase Superbot está compuesta de objetos de las otras clases,
+# y puede tener tambien metodos propios
 class Superbot:  # esta clase contiene 4 objetos.
+    """Robot compuesto que delega cada acción en uno de sus objetos internos."""
 
     def __init__(self):
         self.o1 = Robot()
@@ -45,23 +50,22 @@ class Superbot:  # esta clase contiene 4 objetos.
 
     @staticmethod
     def play_game():
-        print("chest is the best!")
+        print("chess is the best!")
 
     def move(self):
-        return self.o1.move()
+        self.o1.move()
 
     def bark(self):
-        return self.o2.bark()
+        self.o2.bark()
 
     def meow(self):
-        return self.o3.meow()
+        self.o3.meow()
 
     def clean(self):
-        return self.o4.clean()
+        self.o4.clean()
 
 
 henry = Superbot()  # creo el superbot henry , y abajo le asigno las funciones
 henry.move()
 henry.clean()
 henry.play_game()
-

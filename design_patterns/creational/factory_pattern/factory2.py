@@ -1,14 +1,12 @@
-"""To test the creational design patterns, we'll use in this example, the factory_pattern pattern.
-The factory_pattern pattern provides an interface for creating objects in a super class, but allows
-subclasses to alter the type of objects that will be created. This pattern is used when we
-have to crate objects of similar type, or the object creation is very complex.
-The Factory Design Pattern defines an interface or abstract class with a method or set of
-methods that create an object, but the exact type of object is not specified in the interface.
-The responsibility of creating the object is delegated to subclasses which implement the interface
-and provide concrete implementations for the creation methods."""
+"""Simple Factory: a single class with a static factory method decides which concrete
+Sports object to create from a name. The client only knows the Sports interface and
+never instantiates Football or Basketball directly.
+This is the simplest form of factory; there is no subclass delegation (that would be
+the Factory Method pattern)."""
 
 
 class Sports:
+    """Base interface for the sports the factory can create."""
     def play(self):
         pass
 
@@ -29,17 +27,17 @@ class SportsFactory:
     """# Factory class that creates the objects"""
     @staticmethod
     def create_sport(sport):
+        """Return the Sports subclass for the given name. Raises ValueError if unknown."""
         if sport == "basketball":
             return Basketball()
-        elif sport == "football":
+        if sport == "football":
             return Football()
-        else:
-            raise ValueError('invalid sport')
+        raise ValueError('invalid sport')
 
 
-factory = SportsFactory()
-basketball = factory.create_sport('basketball')
-football = factory.create_sport('football')
+if __name__ == "__main__":
+    basketball = SportsFactory.create_sport('basketball')
+    football = SportsFactory.create_sport('football')
 
-football.play()  # playing football
-basketball.play()  # playing basketball
+    football.play()  # kicking the ball
+    basketball.play()  # shooting 3-pointers

@@ -1,47 +1,56 @@
+"""Strategy pattern (functional version): instead of strategy classes, each ordering
+strategy is a plain function that is passed to process_tickets."""
+
 from dataclasses import dataclass, field
 import string
 import random
-from typing import List, Callable
+from collections.abc import Callable
 
 
 def generate_id(length: int = 8) -> str:
-    # helper function for generating an id
+    """generates a random id of uppercase letters"""
     return ''.join(random.choices(string.ascii_uppercase, k=length))
 
 
 @dataclass
 class SupportTicket:
-    id: str = field(init=False, default_factory=generate_id)
+    """a customer support ticket, the id is generated automatically"""
     customer: str
     issue: str
+    id: str = field(init=False, default_factory=generate_id)
 
 
-SupportTickets = List[SupportTicket]
+type SupportTickets = list[SupportTicket]
 
 Ordering = Callable[[SupportTickets], SupportTickets]
 
 
 def fifo_ordering(lista: SupportTickets) -> SupportTickets:
+    """processes tickets in the order they were created"""
     return lista.copy()
 
 
 def filo_ordering(lista: SupportTickets) -> SupportTickets:
+    """processes the newest tickets first"""
     list_copy = lista.copy()
     list_copy.reverse()
     return list_copy
 
 
 def random_ordering(lista: SupportTickets) -> SupportTickets:
+    """processes tickets in random order"""
     list_copy = lista.copy()
     random.shuffle(list_copy)
     return list_copy
 
 
 def blackhole_ordering(_: SupportTickets) -> SupportTickets:
+    """discards every ticket, nothing gets processed"""
     return []
 
 
 class CustomerSupport:
+    """holds the tickets, the ordering strategy is passed in when processing"""
 
     def __init__(self):
         self.tickets: SupportTickets = []
@@ -50,6 +59,7 @@ class CustomerSupport:
         self.tickets.append(SupportTicket(customer, issue))
 
     def process_tickets(self, ordering: Ordering):
+        """orders the tickets with the given strategy function and processes them"""
         # create the ordered list
         ticket_list = ordering(self.tickets)
 
@@ -63,7 +73,8 @@ class CustomerSupport:
             self.process_ticket(ticket)
 
     @staticmethod
-    def process_ticket( ticket: SupportTicket):
+    def process_ticket(ticket: SupportTicket):
+        """prints the details of a single ticket"""
         print("==================================")
         print(f"Processing ticket id: {ticket.id}")
         print(f"Customer: {ticket.customer}")
@@ -72,6 +83,7 @@ class CustomerSupport:
 
 
 def main() -> None:
+    """registers a few tickets and processes them in random order"""
     # create the application
     app = CustomerSupport()
 

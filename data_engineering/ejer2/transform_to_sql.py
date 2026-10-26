@@ -1,13 +1,29 @@
+"""Loads used_cars.csv into a PostgreSQL 'cars' table with pandas and SQLAlchemy."""
+
+import os
+from pathlib import Path
+
 import pandas as pd
-import psycopg2
 from sqlalchemy import create_engine
 
 # Step 1: Create a connection to the PostgreSQL database
-# Replace the placeholders with your database connection details
-database_url = "postgresql://yamil:32874993@localhost:5432/used_cars"
+# The connection string is read from the DATABASE_URL environment variable.
+# Expected format (never hardcode the real password in the source):
+#   postgresql://user:password@localhost:5432/used_cars
+database_url = os.getenv("DATABASE_URL")
+if not database_url:
+    raise SystemExit(
+        "DATABASE_URL is not set. Example: "
+        "export DATABASE_URL='postgresql://user:password@localhost:5432/used_cars'"
+    )
 
-# Step 2: Read the CSV into a pandas DataFrame
-df = pd.read_csv('used_cars.csv')
+# Step 2: Read the CSV into a pandas DataFrame (path relative to this script)
+csv_path = Path(__file__).parent / "used_cars.csv"
+df = pd.read_csv(csv_path)
+
+# Step 2b: Strip whitespace from string columns ('country' and 'vin' have leading spaces)
+for col in df.select_dtypes(include="object").columns:
+    df[col] = df[col].str.strip()
 
 # Step 3: Establish the connection with PostgreSQL using SQLAlchemy
 engine = create_engine(database_url)
