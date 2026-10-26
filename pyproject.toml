@@ -1,0 +1,46 @@
+[tool.poetry]
+name = "python-general"
+version = "0.1.0"
+description = ""
+authors = ["Your Name <you@example.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.13"
+pandas = "^2.3.3"
+pandas-stubs = "~=2.3.3"
+pydantic = {extras = ["email"], version = "^2.12.5"}
+pylint = "^4.0.7"
+
+# Optional groups (install with `poetry install --with data,reports`).
+# Not listed on purpose: `awsglue` only exists inside the AWS Glue runtime, and
+# `oso`/`polar` (Oso Library) was deprecated by Oso in Dec 2023.
+[tool.poetry.group.data]
+optional = true
+
+[tool.poetry.group.data.dependencies]
+openpyxl = "*"
+sqlalchemy = "*"
+psycopg = {extras = ["binary"], version = "*"}
+pyspark = "*"
+
+[tool.poetry.group.reports]
+optional = true
+
+[tool.poetry.group.reports.dependencies]
+jinja2 = "*"
+weasyprint = "*"
+
+
+[tool.pylint."messages control"]
+disable = [
+    "missing-module-docstring",
+    "missing-class-docstring",
+    "missing-function-docstring",
+    "too-few-public-methods",
+]
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
